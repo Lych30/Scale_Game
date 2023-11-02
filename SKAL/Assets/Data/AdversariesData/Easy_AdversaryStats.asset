@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tolerance: 1
   capacity: 1
-  precision: 0.2
+  precision: 0.3
   difficulty: 0

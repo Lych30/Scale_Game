@@ -9,9 +9,15 @@ public class QTE : MonoBehaviour
     [SerializeField] Transform _closingCircle;
     float _progression;
     [SerializeField] float _scaleToSucceed;
+    [SerializeField] float ratio = 0;
+    [SerializeField] int totalNbr = 0;
+    [SerializeField] int sucess = 0;
+
 
     private void Update()
     {
+       
+
        if(_progression < GameManager.instance.qteTime)
        {
             _progression += Time.deltaTime;
@@ -20,16 +26,24 @@ public class QTE : MonoBehaviour
        }
         Fail();
         _progression = 0;
+
     }
 
     private void Success()
     {
         Debug.Log("Success");
+        sucess++;
+        totalNbr++;
+        ratio = (float)sucess / totalNbr;
+        Init();
     }
 
     private void Fail()
     {
         //Debug.Log("Fail");
+        totalNbr++;
+        ratio = (float)sucess / totalNbr;
+        Init();
     }
 
     public void ApplyScale()
@@ -39,7 +53,7 @@ public class QTE : MonoBehaviour
 
     public void Try()
     {
-        if(GetCorrectScale(_progression) <= _scaleToSucceed)
+        if (GetCorrectScale(_progression) <= _scaleToSucceed)
         {
             Success();
         }
