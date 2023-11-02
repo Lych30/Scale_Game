@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         AdversaryStats adversaryStats = GetCorrectStats(difficulty);
         GameObject adversary = Instantiate(_adversaryPrefab,StageReference.instance.adversaryBarrel.position,Quaternion.identity);
+        adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats);
+
         PlayerManager.instance.transform.position = StageReference.instance.playerBarrel.position;
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
     }

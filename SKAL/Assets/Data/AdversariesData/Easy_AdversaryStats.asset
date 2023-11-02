@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
   m_Name: Easy_AdversaryStats
   m_EditorClassIdentifier: 
+  tolerance: 1
+  capacity: 1
+  difficulty: 0

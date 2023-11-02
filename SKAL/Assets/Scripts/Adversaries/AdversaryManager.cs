@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class AdversaryManager : MonoBehaviour
 {
-    public AdversaryStats stats;
 
-    int _tolerance;
-    int _capacity;
+    [SerializeField] int _tolerance;
+    [SerializeField] int _capacity;
 
-    private void Start()
+    public void InitAdversary(AdversaryStats stats)
     {
         _tolerance = stats.tolerance;
         _capacity = stats.capacity;
