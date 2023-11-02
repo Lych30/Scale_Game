@@ -16,4 +16,9 @@ public class PlayerManager : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (!GameManager.instance.gameActive)
+            return;
+    }
 }
