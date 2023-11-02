@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
     private bool _GameActive = false;
     public bool gameActive { get { return _GameActive; } }
 
+    [Space(20)]
+    [Header("DEBUG")]
+    [SerializeField] Difficulty difficulty;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -67,7 +71,7 @@ public class GameManager : MonoBehaviour
         //WILL REMOVE THAT LATER
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SetUpGame(Difficulty.Easy);
+            SetUpGame(difficulty);
         }
     }
     public void SetUpGame(Difficulty difficulty)

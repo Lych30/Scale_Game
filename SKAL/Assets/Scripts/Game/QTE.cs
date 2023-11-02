@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QTE : MonoBehaviour
@@ -9,6 +10,9 @@ public class QTE : MonoBehaviour
     [SerializeField] Transform _closingCircle;
     float _progression;
     [SerializeField] float _scaleToSucceed;
+    
+    [Space(20)]
+    [Header("DEBUG")]
     [SerializeField] float ratio = 0;
     [SerializeField] int totalNbr = 0;
     [SerializeField] int sucess = 0;
@@ -31,18 +35,24 @@ public class QTE : MonoBehaviour
 
     private void Success()
     {
+        //DEBUG
         Debug.Log("Success");
         sucess++;
         totalNbr++;
         ratio = (float)sucess / totalNbr;
+
+
         Init();
     }
 
     private void Fail()
     {
+        //DEBUG
         //Debug.Log("Fail");
         totalNbr++;
         ratio = (float)sucess / totalNbr;
+
+
         Init();
     }
 
