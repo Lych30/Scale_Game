@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
         PlayerManager.instance.transform.position = StageReference.instance.playerBarrel.position;
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
+        StartCoroutine(StartGame());
     }
 
     public AdversaryStats GetCorrectStats(Difficulty difficulty)
@@ -64,6 +65,20 @@ public class GameManager : MonoBehaviour
                 index = Random.Range(0, _EasyAdversaryStats.Count);
                 return _EasyAdversaryStats[index];
         }
+    }
+
+    IEnumerator StartGame()
+    {
+        Debug.Log("ARE YOU READY ??");
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("3");
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("2");
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("1");
+        yield return new WaitForSecondsRealtime(1);
+        Debug.Log("SKOL !!");
+        //ENABLE MAIN GAME INPUTS THERE
     }
 
 }
