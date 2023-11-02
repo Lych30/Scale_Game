@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class PlayerInteract : MonoBehaviour
         _interactable = null;
     }
 
-    private void Update()
+    public void TryInteract(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
+
         if (_interactable == null)
             return;
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
             _interactable.interact();
     }
 }
