@@ -34,6 +34,20 @@ public class GameManager : MonoBehaviour
     [Space(20)]
     [Header("GAME DATA")]
     [SerializeField] float _QTETime = 1f;
+    [SerializeField] float PrecisionAmount_Tier1;
+    [SerializeField] float PrecisionAmount_Tier2;
+    [SerializeField] float PrecisionAmount_Tier3;
+    [SerializeField] float PrecisionAmount_Tier4;
+    float _precisionAmount = 0;
+    public float precisionAmount { get { return _precisionAmount; } }
+
+    [Space(20)]
+    [Header("QTES REFERENCES")]
+    [SerializeField] QTE _playerQTE;
+    public QTE playerQTE { get { return _playerQTE; } }
+
+    [SerializeField] QTE _adversaryQTE;
+    public QTE adversaryQTE { get { return _adversaryQTE; } }
     public float qteTime { get { return _QTETime; } }
     private bool _GameActive = false;
     public bool gameActive { get { return _GameActive; } }
@@ -76,26 +90,31 @@ public class GameManager : MonoBehaviour
             case Difficulty.Easy:
                 index = Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
+                _precisionAmount = PrecisionAmount_Tier1;
                 return _EasyAdversaryStats[index];
 
             case Difficulty.Medium:
                 index = Random.Range(0, _MediumAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier2;
+                _precisionAmount = PrecisionAmount_Tier2;
                 return _MediumAdversaryStats[index];
 
             case Difficulty.Hard:
                 index = Random.Range(0, _HardAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier3;
+                _precisionAmount = PrecisionAmount_Tier3;
                 return _HardAdversaryStats[index];
 
             case Difficulty.Ragnarok:
                 index = Random.Range(0, _RagnarokAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier4;
+                _precisionAmount = PrecisionAmount_Tier4;
                 return _RagnarokAdversaryStats[index];
 
             default:
                 index = Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
+                _precisionAmount = PrecisionAmount_Tier1;
                 return _EasyAdversaryStats[index];
         }
     }
@@ -112,6 +131,13 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSecondsRealtime(1);
         _Billboard.Play("Billboard_Exit");
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        _playerQTE.gameObject.SetActive(true);
+        _playerQTE.Init();
+        _adversaryQTE.gameObject.SetActive(true);
+        _adversaryQTE.Init();
+
         //ENABLE MAIN GAME INPUTS THERE
         _GameActive = true;
     }
