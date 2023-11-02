@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_rb;
     [SerializeField] private bool m_isHolding = false;
     [SerializeField] private float m_direction = 0;
-    private bool _canMove = true;
+    public bool _canMove = true;
     private void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
