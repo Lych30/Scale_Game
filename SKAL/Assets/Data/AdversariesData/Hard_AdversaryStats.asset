@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
   m_Name: Hard_AdversaryStats
   m_EditorClassIdentifier: 
+  name: Ragnar
   tolerance: 3
-  capacity: 3
+  capacity: 0.16
   precision: 0.125
   difficulty: 2

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2954acd030f42a449e39761073d7b5b, type: 3}
   m_Name: Data_Player Stats
   m_EditorClassIdentifier: 
+  name: you
   tolerance: 1
-  capacity: 1
+  capacity: 0.04

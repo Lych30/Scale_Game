@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [SerializeField] private PlayerStats _stats;
+    public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
 
     private void Awake()
@@ -25,8 +26,11 @@ public class PlayerManager : MonoBehaviour
         if (!GameManager.instance.gameActive)
             return;
 
-        GameManager.instance.playerQTE.Try();
-        
+        if (GameManager.instance.playerQTE.Try())
+        {
+            _barrel.Sip();
+        }
+
     }
 
 }

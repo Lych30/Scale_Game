@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
   m_Name: Medium_AdversaryStats
   m_EditorClassIdentifier: 
+  name: Thor
   tolerance: 2
-  capacity: 2
+  capacity: 0.5
   precision: 0.2
   difficulty: 1

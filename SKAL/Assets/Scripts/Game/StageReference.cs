@@ -6,11 +6,11 @@ public class StageReference : MonoBehaviour
 {
     public static StageReference instance;
 
-    [SerializeField] private Transform PlayerBarrel;
-    public Transform playerBarrel { get { return PlayerBarrel; } }
+    [SerializeField] private PlayerBarrel PlayerBarrel;
+    public PlayerBarrel playerBarrel { get { return PlayerBarrel; } }
 
-    [SerializeField] private Transform AdversaryBarrel;
-    public Transform adversaryBarrel { get { return AdversaryBarrel; } }
+    [SerializeField] private AdversaryBarrel AdversaryBarrel;
+    public AdversaryBarrel adversaryBarrel { get { return AdversaryBarrel; } }
 
     private void Awake()
     {

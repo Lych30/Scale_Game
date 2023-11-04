@@ -7,6 +7,7 @@ public class AdversaryManager : MonoBehaviour
 
     [SerializeField] AdversaryStats _stats;
     float _timeOfClick = 0;
+    [SerializeField] AdversaryBarrel _barrel;
 
     [SerializeField] bool debug;
     void Update()
@@ -25,9 +26,10 @@ public class AdversaryManager : MonoBehaviour
 
     }
 
-    public void InitAdversary(AdversaryStats stats)
+    public void InitAdversary(AdversaryStats stats, AdversaryBarrel barrel)
     {
         _stats = stats;
+        _barrel = barrel;
         ResetQTEInteractionStatus();
     }
 
@@ -42,7 +44,10 @@ public class AdversaryManager : MonoBehaviour
         if (!GameManager.instance.gameActive)
             return;
 
-        GameManager.instance.adversaryQTE.Try();
+        if (GameManager.instance.adversaryQTE.Try())
+        {
+            _barrel.Sip();
+        }
         ResetQTEInteractionStatus();
 
     }

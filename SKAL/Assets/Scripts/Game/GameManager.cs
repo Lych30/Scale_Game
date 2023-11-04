@@ -76,12 +76,20 @@ public class GameManager : MonoBehaviour
     }
     public void SetUpGame(Difficulty difficulty)
     {
-        AdversaryStats adversaryStats = GetCorrectStats(difficulty);
-        GameObject adversary = Instantiate(_adversaryPrefab,StageReference.instance.adversaryBarrel.position,Quaternion.identity);
-        adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats);
-
-        PlayerManager.instance.transform.position = StageReference.instance.playerBarrel.position;
+        PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
+        PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
+        Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
+
+
+
+        AdversaryStats adversaryStats = GetCorrectStats(difficulty);
+        StageReference.instance.adversaryBarrel.Init(_LitresToDring, adversaryStats);
+        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats);
+
+
+        GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
+        adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
 
         StartCoroutine(StartGame());
     }
@@ -144,6 +152,16 @@ public class GameManager : MonoBehaviour
 
         //ENABLE MAIN GAME INPUTS THERE
         _GameActive = true;
+    }
+
+    public void Win(string playerName)
+    {
+        Debug.Log(playerName + " Wins !!");
+    }
+
+    public void Loose(string AdversaryName)
+    {
+        Debug.Log(AdversaryName + " Wins !!");
     }
 
 }
