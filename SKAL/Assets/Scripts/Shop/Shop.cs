@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField] Item _Item;
     [SerializeField] List<VerticalLayoutGroup> _vertLGroups;
+    private List<GameObject> _Activeitems = new List<GameObject>();
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class Shop : MonoBehaviour
 
         instance = this;
     }
-    public void OpenShop()
+    public void LoadShop()
     {
         int layoutIndex = 0;
         VerticalLayoutGroup currentLayoutGroup = _vertLGroups[layoutIndex];
@@ -30,16 +32,28 @@ public class Shop : MonoBehaviour
             {
                 layoutIndex++;
 
-                if (layoutIndex >= 4)
+                if (layoutIndex >= 3)
                     break;
 
                 currentLayoutGroup = _vertLGroups[layoutIndex];
             }
 
             Item item = Instantiate(_Item, currentLayoutGroup.transform);
+            _Activeitems.Add(item.gameObject);
             item.Init(_datas[i]);
         }
     }
+
+    public IEnumerator UnLoadShop()
+    {
+        yield return new WaitForSeconds(1);
+
+        foreach (GameObject item in _Activeitems)
+        {
+            Destroy(item.gameObject);
+        }
+    }
+    
 
     public void BuyItem(Item item)
     {
