@@ -17,5 +17,5 @@ public enum Difficulty
     Easy,
     Medium,
     Hard,
-    Ragnarok
+    Einherjar
 }

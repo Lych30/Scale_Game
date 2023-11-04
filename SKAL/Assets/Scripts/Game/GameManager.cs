@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
                 _precisionAmount = PrecisionAmount_Tier3;
                 return _HardAdversaryStats[index];
 
-            case Difficulty.Ragnarok:
+            case Difficulty.Einherjar:
                 index = Random.Range(0, _RagnarokAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier4;
                 _precisionAmount = PrecisionAmount_Tier4;
