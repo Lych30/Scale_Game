@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     [Header("STAGE AND ADVERSARY")]
     [SerializeField] GameObject _stage;
     [SerializeField] GameObject _adversaryPrefab;
+    [SerializeField] Slider _playerSlider;
+    [SerializeField] Slider _adversarySlider;
 
     [Space(20)]
     [Header("ANIMATION REFERENCES")]
@@ -80,12 +83,12 @@ public class GameManager : MonoBehaviour
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
-
+        
 
 
         AdversaryStats adversaryStats = GetCorrectStats(difficulty);
-        StageReference.instance.adversaryBarrel.Init(_LitresToDring, adversaryStats);
-        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats);
+        StageReference.instance.adversaryBarrel.Init(_LitresToDring, adversaryStats,_adversarySlider);
+        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider);
 
 
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
