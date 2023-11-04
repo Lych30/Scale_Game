@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,11 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [SerializeField] private PlayerStats _stats;
+
+    [Header("STATS UI")]
+    [SerializeField] TextMeshProUGUI _capacityTMP;
+    [SerializeField] TextMeshProUGUI _toleranceTMP;
+
     public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
 
@@ -17,6 +23,11 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
 
         instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateStats();
     }
 
     public void TryQTE(InputAction.CallbackContext context)
@@ -31,6 +42,12 @@ public class PlayerManager : MonoBehaviour
             _barrel.Sip();
         }
 
+    }
+
+    public void UpdateStats()
+    {
+        _capacityTMP.text = "Capacity : " + _stats.capacity.ToString();
+        _toleranceTMP.text = "Tolerance : " + _stats.tolerance.ToString();
     }
 
 }

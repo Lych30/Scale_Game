@@ -4,9 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IItemEffect
 {
     [SerializeField] ItemData _data;
+    public ItemData Data { get { return _data; } }
     [SerializeField] Button _button;
     [SerializeField] TextMeshProUGUI _nameText;
     public string itemName { get { return _nameText.text; } }
@@ -36,5 +37,12 @@ public class Item : MonoBehaviour
     {
         Shop.instance.BuyItem(this);
         Shop.instance.datas.Remove(_data);
+    }
+
+    public void ApplyItemStats(ItemData data)
+    {
+        PlayerManager.instance.Stats.capacity += data.capacityBuff;
+        PlayerManager.instance.Stats.tolerance += data.toleranceBuff;
+        PlayerManager.instance.UpdateStats();
     }
 }

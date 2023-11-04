@@ -43,6 +43,7 @@ public class Shop : MonoBehaviour
 
     public void BuyItem(Item item)
     {
+        item.ApplyItemStats(item.Data);
         Debug.Log("You have bought : " + item.itemName +" for "+ item.cost + " currencies");
     }
 }
