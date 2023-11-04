@@ -17,12 +17,11 @@ public class PlayerBarrel : Barrel
     public override void Sip()
     {
         _LitresToDring -= _playerStats.capacity;
-        Debug.Log(_LitresToDring);
 
         _slider.value = _LitresToDring * 20;
 
         if (_LitresToDring <= 0)
-            GameManager.instance.Win(_playerStats.name);
+            GameManager.instance.GameEnd(true);
         //UPDATE VISUALS
     }
 }

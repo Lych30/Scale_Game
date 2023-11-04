@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _adversaryPrefab;
     [SerializeField] Slider _playerSlider;
     [SerializeField] Slider _adversarySlider;
+    [SerializeField] Animator _barAnimator;
 
     [Space(20)]
     [Header("ANIMATION REFERENCES")]
@@ -72,6 +73,10 @@ public class GameManager : MonoBehaviour
     {
         //FOR DEBUG PURPOSES
         //WILL REMOVE THAT LATER
+
+        if (gameActive)
+            return;
+
         if (Input.GetKeyDown(KeyCode.G))
         {
             SetUpGame(difficulty);
@@ -93,6 +98,9 @@ public class GameManager : MonoBehaviour
 
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
         adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
+
+        if (_barAnimator)
+            _barAnimator.Play("Bar_Entrance");
 
         StartCoroutine(StartGame());
     }
@@ -136,6 +144,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
+        _GameActive = true;
         _Billboard.Play("Billboard_Enter");
         yield return new WaitForSecondsRealtime(0.5f);
         foreach (Transform countDownElement in _CountDownContainer)
@@ -154,17 +163,18 @@ public class GameManager : MonoBehaviour
         _adversaryQTE.Init();
 
         //ENABLE MAIN GAME INPUTS THERE
-        _GameActive = true;
     }
 
-    public void Win(string playerName)
+    public void GameEnd(bool victory)
     {
-        Debug.Log(playerName + " Wins !!");
-    }
+        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
+        _GameActive = false;
 
-    public void Loose(string AdversaryName)
-    {
-        Debug.Log(AdversaryName + " Wins !!");
+        _playerQTE.gameObject.SetActive(false);
+        _adversaryQTE.gameObject.SetActive(false);
+
+        if (_barAnimator)
+            _barAnimator.Play("Bar_Exit");
     }
 
 }
