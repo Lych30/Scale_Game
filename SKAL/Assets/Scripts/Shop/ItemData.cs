@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ItemData : ScriptableObject
 {
-    public int cost;
-    public Image image;
-    public string description;
+    public string itemName;
+    public int itemCost;
+    public Image itemImage;
+    public string itemDescription;
 }

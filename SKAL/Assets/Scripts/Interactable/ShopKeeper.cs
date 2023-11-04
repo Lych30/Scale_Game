@@ -9,5 +9,7 @@ public class ShopKeeper : MonoBehaviour, IInteractable
     {
         if(_shopUI)
             _shopUI.SetActive(!_shopUI.activeInHierarchy);
+
+        Shop.instance.OpenShop();
     }
 }
