@@ -30,12 +30,14 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         isOpen = true;
         _shopAnimator.Play("Shop_Enter");
         Shop.instance.LoadShop();
+        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
     }
 
     public void CloseShop()
     {
         isOpen = false;
         _shopAnimator.Play("Shop_Exit");
+        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
         StartCoroutine(Shop.instance.UnLoadShop());
     }
 }

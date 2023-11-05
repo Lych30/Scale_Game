@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ReadMove(InputAction.CallbackContext context)
     {
-        _isHolding = context.control.IsPressed();
+        _isHolding = context.performed;
         _direction = context.ReadValue<float>();
     }
 
