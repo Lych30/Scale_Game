@@ -29,6 +29,7 @@ public class DayCycleManager : MonoBehaviour
     private void Start()
     {
         levelTorchs = FindObjectsOfType<Torch>();
+        TriggerDay();
     }
 
     private void Update()
