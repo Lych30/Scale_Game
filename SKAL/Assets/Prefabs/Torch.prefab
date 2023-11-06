@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1854348397641031105}
   - component: {fileID: 6016894890428156220}
   - component: {fileID: 8781186165990725129}
+  - component: {fileID: 1689516563314735030}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -107,6 +108,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1689516563314735030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612629255756701019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754cff99b26d8654199f2d87f85195e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 8997209081891957000}
+  _torchAnimator: {fileID: 8781186165990725129}
 --- !u!1 &3516561058331608446
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +188,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00364995, y: 0.59290004, z: 0}
-    m_Extent: {x: 2.89225, y: 2.8715, z: 0}
+    m_Center: {x: 0.0014500618, y: 0.5906501, z: 0}
+    m_Extent: {x: 2.89365, y: 2.87325, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
