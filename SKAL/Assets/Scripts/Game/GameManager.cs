@@ -100,12 +100,6 @@ public class GameManager : MonoBehaviour
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
         adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
 
-
-        
-
-
-        
-
         StartCoroutine(StartGame());
     }
 
@@ -151,36 +145,32 @@ public class GameManager : MonoBehaviour
         _GameActive = true;
 
         _versusPanelAnimator.Play("Versus_Entrance");
-        yield return new WaitForSeconds(0.5f);
-
-        
-
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.25f);
 
         _versusPanelAnimator.Play("Versus_Exit");
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         if (_barAnimator)
             _barAnimator.Play("Bar_Entrance");
 
         _Billboard.Play("Billboard_Enter");
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         foreach (Transform countDownElement in _CountDownContainer)
         {
             countDownElement.GetComponent<Animator>().Play("Countdown");
             Debug.Log(countDownElement.name);
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSeconds(1);
         }
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSeconds(1);
         _Billboard.Play("Billboard_Exit");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         _playerQTE.gameObject.SetActive(true);
         _playerQTE.Init();
