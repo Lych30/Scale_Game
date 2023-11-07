@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [Header("ANIMATION REFERENCES")]
     [SerializeField] Transform _CountDownContainer;
     [SerializeField] Animator _Billboard;
+    [SerializeField] Animator _versusPanelAnimator;
 
     [Space(20)]
     [Header("GAME DATA")]
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetUpGame(Difficulty difficulty)
     {
-        PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
+        
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
@@ -99,8 +100,11 @@ public class GameManager : MonoBehaviour
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
         adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
 
-        if (_barAnimator)
-            _barAnimator.Play("Bar_Entrance");
+
+        
+
+
+        
 
         StartCoroutine(StartGame());
     }
@@ -145,8 +149,29 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGame()
     {
         _GameActive = true;
-        _Billboard.Play("Billboard_Enter");
+
+        _versusPanelAnimator.Play("Versus_Entrance");
+        yield return new WaitForSeconds(0.5f);
+
+        
+
+        yield return new WaitForSeconds(0.5f);
+
+        PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
+        
+        yield return new WaitForSeconds(0.5f);
+
+        _versusPanelAnimator.Play("Versus_Exit");
+
         yield return new WaitForSecondsRealtime(0.5f);
+
+        if (_barAnimator)
+            _barAnimator.Play("Bar_Entrance");
+
+        _Billboard.Play("Billboard_Enter");
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
         foreach (Transform countDownElement in _CountDownContainer)
         {
             countDownElement.GetComponent<Animator>().Play("Countdown");
