@@ -8,11 +8,17 @@ public class ShopKeeper : MonoBehaviour, IInteractable
     [SerializeField] GameObject _shopUI;
     [SerializeField] Animator _shopAnimator;
     bool isOpen = false;
+    bool _isAnimFinished = true;
     public void interact()
     {
 
         if (!_shopUI)
             return;
+
+        if (!_isAnimFinished)
+            return;
+
+        _isAnimFinished = false;
 
         if (!isOpen)
         {
@@ -22,7 +28,8 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         {
             CloseShop();
         }
-             
+        
+        StartCoroutine(canInteractChange());
     }
 
     public void OpenShop()
@@ -40,4 +47,11 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
         StartCoroutine(Shop.instance.UnLoadShop());
     }
+
+    IEnumerator canInteractChange()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _isAnimFinished = true;
+    }
+
 }

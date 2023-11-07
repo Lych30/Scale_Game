@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     [Space(20)]
     [Header("DEBUG")]
     [SerializeField] Difficulty difficulty;
+    SpriteRenderer _ennemyRenderer;
 
     private void Awake()
     {
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
         adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
-
+        _ennemyRenderer = adversary.GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(StartGame());
     }
 
@@ -148,7 +149,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
-        
+        _ennemyRenderer.enabled = true;
         yield return new WaitForSeconds(1.25f);
 
         _versusPanelAnimator.Play("Versus_Exit");
