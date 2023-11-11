@@ -42,6 +42,9 @@ public class Shop : MonoBehaviour
             _Activeitems.Add(item.gameObject);
             item.Init(_datas[i]);
         }
+
+        if(_vertLGroups[0].transform.childCount > 0)
+            ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
     }
 
     public IEnumerator UnLoadShop()

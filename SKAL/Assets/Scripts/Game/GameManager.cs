@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _LitresToDring_Tier3;
     [SerializeField] int _LitresToDring_Tier4;
     int _LitresToDring = 0;
+    public int litreToDrink { get { return _LitresToDring; } }
 
     [Space(20)]
     [Header("STAGE AND ADVERSARY")]
@@ -57,10 +60,13 @@ public class GameManager : MonoBehaviour
     private bool _GameActive = false;
     public bool gameActive { get { return _GameActive; } }
 
-    [Space(20)]
-    [Header("DEBUG")]
-    [SerializeField] Difficulty difficulty;
+
+
     SpriteRenderer _ennemyRenderer;
+
+    Difficulty _currentDifficulty = Difficulty.Einherjar;
+    AdversaryStats _adversaryStats;
+    [SerializeField] int _winsBeforeDifUp;
 
     private void Awake()
     {
@@ -71,35 +77,31 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
+    private void Start()
     {
-        //FOR DEBUG PURPOSES
-        //WILL REMOVE THAT LATER
-
-        if (gameActive)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SetUpGame(difficulty);
-        }
+        LoadAdversary();
     }
-    public void SetUpGame(Difficulty difficulty)
+
+    public void LoadAdversary()
+    {
+        //LOAD NEXT ADVERSARY
+        _adversaryStats = GetCorrectStats(_currentDifficulty);
+        GameSelectionMenu.instance.Init(_adversaryStats);
+    }
+
+    public void SetUpGame()
     {
         
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         
-
-
-        AdversaryStats adversaryStats = GetCorrectStats(difficulty);
-        StageReference.instance.adversaryBarrel.Init(_LitresToDring, adversaryStats,_adversarySlider);
+        StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider);
         StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider);
 
 
         GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
-        adversary.GetComponent<AdversaryManager>().InitAdversary(adversaryStats,StageReference.instance.adversaryBarrel);
+        adversary.GetComponent<AdversaryManager>().InitAdversary(_adversaryStats, StageReference.instance.adversaryBarrel);
         _ennemyRenderer = adversary.GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(StartGame());
     }
@@ -110,38 +112,38 @@ public class GameManager : MonoBehaviour
         switch (difficulty)
         {
             case Difficulty.Easy:
-                index = Random.Range(0, _EasyAdversaryStats.Count);
+                index = UnityEngine.Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
                 _precisionAmount = PrecisionAmount_Tier1;
                 return _EasyAdversaryStats[index];
 
             case Difficulty.Medium:
-                index = Random.Range(0, _MediumAdversaryStats.Count);
+                index = UnityEngine.Random.Range(0, _MediumAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier2;
                 _precisionAmount = PrecisionAmount_Tier2;
                 return _MediumAdversaryStats[index];
 
             case Difficulty.Hard:
-                index = Random.Range(0, _HardAdversaryStats.Count);
+                index = UnityEngine.Random.Range(0, _HardAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier3;
                 _precisionAmount = PrecisionAmount_Tier3;
                 return _HardAdversaryStats[index];
 
             case Difficulty.Einherjar:
-                index = Random.Range(0, _RagnarokAdversaryStats.Count);
+                index = UnityEngine.Random.Range(0, _RagnarokAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier4;
                 _precisionAmount = PrecisionAmount_Tier4;
                 return _RagnarokAdversaryStats[index];
 
             default:
-                index = Random.Range(0, _EasyAdversaryStats.Count);
+                index = UnityEngine.Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
                 _precisionAmount = PrecisionAmount_Tier1;
                 return _EasyAdversaryStats[index];
         }
     }
 
-    IEnumerator StartGame()
+    public IEnumerator StartGame()
     {
         _GameActive = true;
 
@@ -191,6 +193,46 @@ public class GameManager : MonoBehaviour
 
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
+
+        _winsBeforeDifUp--;
+
+        if( _winsBeforeDifUp <= 0)
+        {
+            UpDifficulty();
+        }
+
+        LoadAdversary();
     }
 
+    private void UpDifficulty()
+    {
+
+        if(_currentDifficulty < Difficulty.Einherjar)
+            _currentDifficulty++;
+
+        /*
+        switch (_currentDifficulty)
+        {
+            case Difficulty.Easy:
+                _currentDifficulty++;
+                break;
+
+            case Difficulty.Medium:
+                _currentDifficulty++;
+                break;
+
+            case Difficulty.Hard:
+                _currentDifficulty++;
+                break;
+
+            case Difficulty.Einherjar:
+                break;
+            default:
+                break;
+               
+        }
+        */
+    }
 }
+
+

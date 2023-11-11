@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        _stats.tolerance = _stats.BaseTolerance;
+        _stats.capacity = _stats.BaseCapacity;
         UpdateStats();
     }
 
@@ -48,6 +50,8 @@ public class PlayerManager : MonoBehaviour
     {
         _capacityTMP.text = "Capacity : " + _stats.capacity.ToString();
         _toleranceTMP.text = "Tolerance : " + _stats.tolerance.ToString();
+
+      
     }
 
 }

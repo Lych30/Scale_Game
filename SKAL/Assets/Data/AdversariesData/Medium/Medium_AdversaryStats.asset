@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
-  m_Name: Godly_AdversaryStats
+  m_Name: Medium_AdversaryStats
   m_EditorClassIdentifier: 
-  name: Thor
-  tolerance: 5
-  capacity: 1
-  precision: 0.05
-  difficulty: 3
+  name: Eivor
+  title: the neophite
+  tolerance: 2
+  capacity: 3
+  precision: 0.2
+  difficulty: 1
