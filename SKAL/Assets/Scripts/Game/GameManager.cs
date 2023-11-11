@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] Difficulty _currentDifficulty = Difficulty.Easy;
+    [SerializeField] int _winsBeforeDifUp;
+
     [Header("ADVERSARIES STATS")]
     [SerializeField] List<AdversaryStats> _EasyAdversaryStats;
     [SerializeField] List<AdversaryStats> _MediumAdversaryStats;
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _LitresToDring_Tier4;
     int _LitresToDring = 0;
     public int litreToDrink { get { return _LitresToDring; } }
+
 
     [Space(20)]
     [Header("STAGE AND ADVERSARY")]
@@ -63,10 +67,9 @@ public class GameManager : MonoBehaviour
 
 
     SpriteRenderer _ennemyRenderer;
-
-    Difficulty _currentDifficulty = Difficulty.Einherjar;
+    GameObject _adversary;
     AdversaryStats _adversaryStats;
-    [SerializeField] int _winsBeforeDifUp;
+    
 
     private void Awake()
     {
@@ -100,9 +103,9 @@ public class GameManager : MonoBehaviour
         StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider);
 
 
-        GameObject adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
-        adversary.GetComponent<AdversaryManager>().InitAdversary(_adversaryStats, StageReference.instance.adversaryBarrel);
-        _ennemyRenderer = adversary.GetComponentInChildren<SpriteRenderer>();
+        _adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
+        _adversary.GetComponent<AdversaryManager>().InitAdversary(_adversaryStats, StageReference.instance.adversaryBarrel);
+        _ennemyRenderer = _adversary.GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(StartGame());
     }
 
@@ -190,15 +193,18 @@ public class GameManager : MonoBehaviour
 
         _playerQTE.gameObject.SetActive(false);
         _adversaryQTE.gameObject.SetActive(false);
+        Destroy(_adversary);
 
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
 
-        _winsBeforeDifUp--;
+        if(victory)
+            _winsBeforeDifUp--;
 
         if( _winsBeforeDifUp <= 0)
         {
             UpDifficulty();
+            _winsBeforeDifUp = 3;
         }
 
         LoadAdversary();

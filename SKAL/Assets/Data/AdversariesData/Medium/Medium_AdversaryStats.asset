@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Eivor
   title: the neophite
   tolerance: 2
-  capacity: 3
+  capacity: 0.08
   precision: 0.2
   difficulty: 1
