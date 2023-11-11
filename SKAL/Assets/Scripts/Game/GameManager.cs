@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -104,8 +106,13 @@ public class GameManager : MonoBehaviour
 
 
         _adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
+
+        if (_adversaryStats.gfx)
+            Instantiate(_adversaryStats.gfx, adversaryPos, Quaternion.identity, _adversary.transform);
+
         _adversary.GetComponent<AdversaryManager>().InitAdversary(_adversaryStats, StageReference.instance.adversaryBarrel);
         _ennemyRenderer = _adversary.GetComponentInChildren<SpriteRenderer>();
+        _ennemyRenderer.enabled = false;
         StartCoroutine(StartGame());
     }
 
@@ -154,9 +161,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
-        _ennemyRenderer.enabled = true;
         yield return new WaitForSeconds(1.25f);
-
+        _ennemyRenderer.enabled = true;
         _versusPanelAnimator.Play("Versus_Exit");
 
         yield return new WaitForSeconds(0.5f);

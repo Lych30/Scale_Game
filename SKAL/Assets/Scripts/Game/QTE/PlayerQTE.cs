@@ -8,11 +8,14 @@ public class PlayerQTE : QTE
     {
         if (GetCorrectScale(_progression) <= _scaleToSucceed)
         {
+            _magicParticleSystem.Play();
+            HandleCircleSpeed();
             Init();
             return true;
         }
         else
         {
+            _circleSpeed = 1;
             Init();
             return false;
         }

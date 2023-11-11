@@ -18,3 +18,4 @@ MonoBehaviour:
   capacity: 0.04
   precision: 0.3
   difficulty: 0
+  gfx: {fileID: 7803241986700211839, guid: 0d3dc4e29972e5e4389d435387aa01bb, type: 3}

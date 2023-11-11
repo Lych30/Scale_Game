@@ -11,6 +11,7 @@ public class AdversaryStats : ScriptableObject
     public float capacity; //HOW MUCH THE PLAYER CAN DRINK EACH SIP
     public float precision; //PRECISION ON THE QTE
     public Difficulty difficulty;
+    public GameObject gfx;
     
 }
 public enum Difficulty

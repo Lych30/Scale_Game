@@ -8,8 +8,9 @@ public class AdversaryManager : MonoBehaviour
     [SerializeField] AdversaryStats _stats;
     float _timeOfClick = 0;
     [SerializeField] AdversaryBarrel _barrel;
-
     [SerializeField] bool debug;
+    GameObject _graphics;
+    private float speedRatio = 1;
     void Update()
     {
         if (!GameManager.instance.gameActive)
@@ -35,7 +36,7 @@ public class AdversaryManager : MonoBehaviour
 
     public void ResetQTEInteractionStatus()
     {
-        _timeOfClick = (1 - GameManager.instance.precisionAmount) + Random.Range(0.15f, -_stats.precision);
+        _timeOfClick = (1 - GameManager.instance.precisionAmount) + Random.Range(0.15f, -_stats.precision) / speedRatio;
     }
 
     public void TryQTE()
@@ -48,6 +49,9 @@ public class AdversaryManager : MonoBehaviour
         {
             _barrel.Sip();
         }
+
+        speedRatio = GameManager.instance.adversaryQTE.circleSpeed;
+
         ResetQTEInteractionStatus();
 
     }

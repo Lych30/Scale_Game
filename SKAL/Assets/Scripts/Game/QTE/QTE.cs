@@ -10,6 +10,9 @@ public abstract class QTE : MonoBehaviour
     [SerializeReference] protected Transform _closingCircle;
     [SerializeReference] protected float _progression;
     [SerializeReference] protected float _scaleToSucceed;
+    [SerializeReference,Range(1,3)] protected float _maxCircleSpeed = 2;
+    protected float _circleSpeed = 1;
+    [SerializeReference] protected ParticleSystem _magicParticleSystem;
 
     [Space(20)]
     [Header("DEBUG")]
@@ -17,6 +20,7 @@ public abstract class QTE : MonoBehaviour
     [SerializeReference] int totalNbr = 0;
     [SerializeReference] int sucess = 0;
 
+    [HideInInspector] public float circleSpeed {  get { return _circleSpeed; } }
 
     private void Update()
     {
@@ -24,13 +28,20 @@ public abstract class QTE : MonoBehaviour
 
        if(_progression < GameManager.instance.qteTime)
        {
-            _progression += Time.deltaTime;
+            _progression += (Time.deltaTime * _circleSpeed);
             ApplyScale();
             return;
        }
         
         _progression = 0;
 
+    }
+
+    protected void HandleCircleSpeed()
+    {
+        _circleSpeed += 0.15f;
+        if(_circleSpeed > _maxCircleSpeed)
+            _circleSpeed = _maxCircleSpeed;
     }
 
     public virtual bool Try() { return false; }
