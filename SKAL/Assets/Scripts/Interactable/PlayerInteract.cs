@@ -14,10 +14,14 @@ public class PlayerInteract : MonoBehaviour
             return;
 
         _interactable = collision.GetComponent<IInteractable>();
+        _interactable.ShowAnnotation();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (_interactable != null)
+            _interactable.HideAnnotation();
+
         _interactable = null;
     }
 

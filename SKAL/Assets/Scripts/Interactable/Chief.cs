@@ -7,6 +7,7 @@ public sealed class Chief : MonoBehaviour, IInteractable
     public static Chief instance;
     [SerializeField] GameObject _GSelectionUI;
     [SerializeField] Animator _GSelectionAnimator;
+    [SerializeField] GameObject _annotation;
     bool isOpen = false;
     bool _isAnimFinished = true;
     private void Awake()
@@ -61,5 +62,15 @@ public sealed class Chief : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(1.0f);
         _isAnimFinished = true;
+    }
+
+    public void ShowAnnotation()
+    {
+        _annotation.SetActive(true);
+    }
+
+    public void HideAnnotation()
+    {
+        _annotation.SetActive(false);
     }
 }

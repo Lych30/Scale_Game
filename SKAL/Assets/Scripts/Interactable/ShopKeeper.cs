@@ -7,6 +7,7 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject _shopUI;
     [SerializeField] Animator _shopAnimator;
+    [SerializeField] GameObject _annotation;
     bool isOpen = false;
     bool _isAnimFinished = true;
     public void interact()
@@ -54,4 +55,13 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         _isAnimFinished = true;
     }
 
+    public void ShowAnnotation()
+    {
+        _annotation.SetActive(true);
+    }
+
+    public void HideAnnotation()
+    {
+        _annotation.SetActive(false);
+    }
 }
