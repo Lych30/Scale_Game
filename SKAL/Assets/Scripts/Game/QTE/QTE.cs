@@ -13,7 +13,9 @@ public abstract class QTE : MonoBehaviour
     [SerializeReference,Range(1,3)] protected float _maxCircleSpeed = 2;
     protected float _circleSpeed = 1;
     [SerializeReference] protected ParticleSystem _magicParticleSystem;
+    [SerializeReference] protected ParticleSystem[] _RuneParticleSystem_Tiers;
 
+    protected float streak = 0;
     [Space(20)]
     [Header("DEBUG")]
     [SerializeReference] float ratio = 0;
@@ -37,13 +39,30 @@ public abstract class QTE : MonoBehaviour
 
     }
 
-    protected void HandleCircleSpeed()
+    protected void HandleCircleSpeedAndStreak()
     {
         _circleSpeed += 0.15f;
         if(_circleSpeed > _maxCircleSpeed)
             _circleSpeed = _maxCircleSpeed;
+
+        streak++;
+
+        if(streak > 4)
+            streak = 4;
     }
 
+    protected void HandleVisualEffect()
+    {
+        _magicParticleSystem.Play();
+
+        if (streak <= 0)
+            return;
+
+        for(int i = 0; i < streak; i++)
+        {
+            _RuneParticleSystem_Tiers[i].Play();
+        }
+    }
     public virtual bool Try() { return false; }
 
     public void ApplyScale()

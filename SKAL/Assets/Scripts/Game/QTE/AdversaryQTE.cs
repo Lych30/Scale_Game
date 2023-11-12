@@ -9,13 +9,14 @@ public class AdversaryQTE : QTE
     {
         if (GetCorrectScale(_progression) <= _scaleToSucceed)
         {
-            _magicParticleSystem.Play();
-            HandleCircleSpeed();
+            HandleVisualEffect();
+            HandleCircleSpeedAndStreak();
             Init();
             return true;
         }
         else
         {
+            streak = 0;
             _circleSpeed = 1;
             Init();
             return false;
