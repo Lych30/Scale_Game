@@ -4,7 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerMovement),typeof(PlayerInteract),typeof(PlayerCoins))]
+[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerInteract))]
+[RequireComponent(typeof(PlayerInteract))]
+[RequireComponent(typeof(PlayerCoins))]
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;

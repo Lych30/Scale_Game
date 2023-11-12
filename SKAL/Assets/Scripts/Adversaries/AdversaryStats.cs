@@ -12,6 +12,7 @@ public class AdversaryStats : ScriptableObject
     public float precision; //PRECISION ON THE QTE
     public Difficulty difficulty;
     public GameObject gfx;
+    public int reward;
     
 }
 public enum Difficulty

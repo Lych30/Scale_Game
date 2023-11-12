@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Shop : MonoBehaviour
 {
@@ -21,6 +22,45 @@ public class Shop : MonoBehaviour
 
         instance = this;
     }
+
+    private void Start()
+    {
+        InitShop();
+    }
+    public void InitShop()
+    {
+        int layoutIndex = 0;
+        VerticalLayoutGroup currentLayoutGroup = _vertLGroups[layoutIndex];
+
+        for (int i = 0; i < _datas.Count; i++)
+        {
+            if (currentLayoutGroup.transform.childCount >= 3)
+            {
+                layoutIndex++;
+
+                if (layoutIndex >= 3)
+                    break;
+
+                currentLayoutGroup = _vertLGroups[layoutIndex];
+            }
+
+            Item item = Instantiate(_Item, currentLayoutGroup.transform);
+            _Activeitems.Add(item.gameObject);
+            item.Init(_datas[i]);
+            item.gameObject.SetActive(false);
+        }
+
+        if (_vertLGroups[0].transform.childCount > 0)
+            ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
+    }
+    public void LoadShop()
+    {
+        foreach (GameObject item in _Activeitems)
+        {
+            item.SetActive(true);
+        }
+    }
+    /*
     public void LoadShop()
     {
         int layoutIndex = 0;
@@ -46,6 +86,7 @@ public class Shop : MonoBehaviour
         if(_vertLGroups[0].transform.childCount > 0)
             ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
     }
+    */
 
     public IEnumerator UnLoadShop()
     {
@@ -53,7 +94,7 @@ public class Shop : MonoBehaviour
 
         foreach (GameObject item in _Activeitems)
         {
-            Destroy(item.gameObject);
+            item.SetActive(false);
         }
     }
     

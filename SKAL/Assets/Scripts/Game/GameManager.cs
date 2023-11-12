@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
+        PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = false;
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         
@@ -195,6 +196,7 @@ public class GameManager : MonoBehaviour
     public void GameEnd(bool victory)
     {
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
+        PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = true;
         _GameActive = false;
 
         _playerQTE.gameObject.SetActive(false);

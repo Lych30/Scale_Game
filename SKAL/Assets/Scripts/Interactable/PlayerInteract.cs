@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     IInteractable _interactable;
+    public bool CanInteract = true;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IInteractable TempInteractable = collision.GetComponent<IInteractable>();
@@ -27,6 +29,9 @@ public class PlayerInteract : MonoBehaviour
 
     public void TryInteract(InputAction.CallbackContext context)
     {
+        if(!CanInteract)
+            return;
+
         if(!context.performed) return;
 
         if (_interactable == null)
