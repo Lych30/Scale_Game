@@ -40,6 +40,7 @@ public class Item : MonoBehaviour, IItemEffect
         if (!_canBeBought)
             return;
 
+        _canBeBought = false;
         SetVisual();
         _disabledButton.SetActive(true);
         Shop.instance.BuyItem(this);

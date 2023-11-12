@@ -113,7 +113,10 @@ public class GameManager : MonoBehaviour
 
         _adversary.GetComponent<AdversaryManager>().InitAdversary(_adversaryStats, StageReference.instance.adversaryBarrel);
         _ennemyRenderer = _adversary.GetComponentInChildren<SpriteRenderer>();
-        _ennemyRenderer.enabled = false;
+
+        if( _ennemyRenderer != null )
+            _ennemyRenderer.enabled = false;
+
         StartCoroutine(StartGame());
     }
 
@@ -163,7 +166,10 @@ public class GameManager : MonoBehaviour
 
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         yield return new WaitForSeconds(1.25f);
-        _ennemyRenderer.enabled = true;
+
+        if (_ennemyRenderer != null)
+            _ennemyRenderer.enabled = true;
+
         _versusPanelAnimator.Play("Versus_Exit");
 
         yield return new WaitForSeconds(0.5f);
