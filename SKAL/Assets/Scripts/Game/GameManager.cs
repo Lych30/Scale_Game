@@ -213,14 +213,19 @@ public class GameManager : MonoBehaviour
             _barAnimator.Play("Bar_Exit");
 
         if(victory)
+        {
             _winsBeforeDifUp--;
 
+            PlayerManager.instance.stats.currency += _adversaryStats.currencyReward;
+            PlayerManager.instance.stats.magicPoints += _adversaryStats.magicPointsReward;
+        }
+            
         if( _winsBeforeDifUp <= 0)
         {
             UpDifficulty();
             _winsBeforeDifUp = 3;
         }
-
+        
         LoadAdversary();
     }
 

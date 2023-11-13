@@ -8,14 +8,18 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInteract))]
 [RequireComponent(typeof(PlayerInteract))]
 [RequireComponent(typeof(PlayerCoins))]
+[RequireComponent(typeof(PlayerMagic))]
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     [SerializeField] private PlayerStats _stats;
+    public PlayerStats stats { get { return _stats; } }
 
     [Header("STATS UI")]
     [SerializeField] TextMeshProUGUI _capacityTMP;
     [SerializeField] TextMeshProUGUI _toleranceTMP;
+    [SerializeField] TextMeshProUGUI _currencyTMP;
+    [SerializeField] TextMeshProUGUI _magicPointsTMP;
 
     public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
@@ -53,6 +57,8 @@ public class PlayerManager : MonoBehaviour
     {
         _capacityTMP.text = "Capacity : " + _stats.capacity.ToString();
         _toleranceTMP.text = "Tolerance : " + _stats.tolerance.ToString();
+        _currencyTMP.text = "currency : " + _stats.currency.ToString();
+        _magicPointsTMP.text = "Magic Points : " + _stats.magicPoints.ToString();
 
       
     }
