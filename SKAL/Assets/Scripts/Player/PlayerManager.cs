@@ -25,9 +25,9 @@ public class PlayerManager : MonoBehaviour
     public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
 
-    [SerializeField] float _litresInBlood = 0;
+    float _litresInBlood = 0;
     float DrunkRatio = 0;
-    [SerializeField] private float LerpDrunkRatio = 0;
+    private float LerpDrunkRatio = 0;
     [SerializeField] UnityEngine.Rendering.VolumeProfile volumeProfile;
     UnityEngine.Rendering.Universal.DepthOfField DOF;
 
@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
     public void ApplyBlurr()
     {
         if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
-        DOF.focusDistance.Override(2 - LerpDrunkRatio);
+        DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.GreenMagic * 5) * 0.01f)));
 
     }
     public void AddAlcohol(float dose)

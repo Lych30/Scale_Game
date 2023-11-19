@@ -5735,8 +5735,6 @@ MonoBehaviour:
   _currencyTMP: {fileID: 1163148197}
   _magicPointsTMP: {fileID: 2104133584}
   _barrel: {fileID: 0}
-  _litresInBlood: 0
-  LerpDrunkRatio: 0
   volumeProfile: {fileID: 11400000, guid: cb29f1216488ceb46976ccb889420ce5, type: 2}
 --- !u!114 &172222462
 MonoBehaviour:
@@ -82076,8 +82074,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0029500127, y: 0.0030999184, z: 0}
-    m_Extent: {x: 1.00565, y: 6.9041, z: 0}
+    m_Center: {x: 0.00059998035, y: 0.0021500587, z: 0}
+    m_Extent: {x: 1.0059, y: 6.90585, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
