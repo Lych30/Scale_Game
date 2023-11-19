@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerInteract))]
@@ -23,6 +24,12 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
+
+    [SerializeField] float _litresInBlood = 0;
+    float DrunkRatio = 0;
+    [SerializeField] private float LerpDrunkRatio = 0;
+    [SerializeField] UnityEngine.Rendering.VolumeProfile volumeProfile;
+    UnityEngine.Rendering.Universal.DepthOfField DOF;
 
     private void Awake()
     {
@@ -63,4 +70,43 @@ public class PlayerManager : MonoBehaviour
       
     }
 
+    
+    public void ApplyBlurr()
+    {
+        if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
+        DOF.focusDistance.Override(2 - LerpDrunkRatio);
+
+    }
+    public void AddAlcohol(float dose)
+    {
+        _litresInBlood += dose;
+
+        if (_litresInBlood > stats.tolerance)
+        {
+            DrunkRatio += 0.1f;
+            Mathf.Clamp01(DrunkRatio);
+        }
+
+    }
+
+    public void FixedUpdate()
+    {
+        LerpDrunkRatio = Mathf.Lerp(LerpDrunkRatio, DrunkRatio, 0.1f);
+
+        if (_litresInBlood > 0)
+            _litresInBlood -= 0.001f;
+        
+        if(_litresInBlood < 0)
+            _litresInBlood = 0;
+       
+
+        if(DrunkRatio > 0)
+            DrunkRatio -= 0.001f;
+
+        if (DrunkRatio < 0)
+            DrunkRatio = 0;
+
+        ApplyBlurr();
+        
+    }
 }

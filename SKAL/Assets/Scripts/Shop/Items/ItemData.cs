@@ -9,6 +9,6 @@ public class ItemData : ScriptableObject
     public int itemCost;
     public Image itemImage;
     public string itemDescription;
-    public int toleranceBuff;
+    public float toleranceBuff;
     public float capacityBuff;
 }

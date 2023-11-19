@@ -25,6 +25,9 @@ public sealed class MagicShopMenu : MonoBehaviour
 
     public void AddMagic(int color)
     {
+        if (PlayerManager.instance.stats.magicPoints <= 0)
+            return;
+
         MagicSlider slider = new MagicSlider();
 
         switch (color)

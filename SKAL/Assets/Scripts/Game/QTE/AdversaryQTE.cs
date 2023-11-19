@@ -9,7 +9,7 @@ public class AdversaryQTE : QTE
     {
         if (GetCorrectScale(_progression) <= _scaleToSucceed)
         {
-            HandleVisualEffect();
+            //HandleVisualEffect();
             HandleCircleSpeedAndStreak();
             Init();
             return true;
