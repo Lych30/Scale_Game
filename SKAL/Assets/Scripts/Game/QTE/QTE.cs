@@ -76,9 +76,8 @@ public abstract class QTE : MonoBehaviour
         return _closingCircleCurve.Evaluate(_progression);
     }
 
-    public void Init()
+    public virtual void Init()
     {
-        _scaleToSucceed = GameManager.instance.precisionAmount;
         _progression = 0;
         _targetCircle.localScale = Vector3.one * _scaleToSucceed;
         ApplyScale();

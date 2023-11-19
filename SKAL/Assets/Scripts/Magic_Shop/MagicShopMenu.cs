@@ -9,7 +9,11 @@ public sealed class MagicShopMenu : MonoBehaviour
     [SerializeField] private MagicSlider _redSlider;
     [SerializeField] private MagicSlider _greenSlider;
     [SerializeField] private MagicSlider _blueSlider;
-
+    /*
+     rouge = % de capacité en plus
+     vert = % de reduction de l'effet de l'alcool
+     bleu = % de taille du QTE
+    */
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -25,29 +29,42 @@ public sealed class MagicShopMenu : MonoBehaviour
 
         switch (color)
         {
-            case 2:
-                PlayerMagic.instance.AddBluePower();
-                slider = _blueSlider;
+            case 2: slider = _blueSlider;
+
+                    if (slider.Maxed)
+                        return;
+
+                    PlayerMagic.instance.AddBluePower();
                 break;
 
             case 3:
-                PlayerMagic.instance.AddGreenPower();
                 slider = _greenSlider;
+
+                if (slider.Maxed)
+                    return;
+
+                PlayerMagic.instance.AddGreenPower();
                 break;
 
             case 1:
-                PlayerMagic.instance.AddRedPower();
                 slider = _redSlider;
+
+                if (slider.Maxed)
+                    return;
+
+                PlayerMagic.instance.AddRedPower();
                 break;
 
             default:
-                PlayerMagic.instance.AddRedPower();
                 slider = _redSlider;
+
+                if (slider.Maxed)
+                    return;
+
+                PlayerMagic.instance.AddRedPower();
                 break;
         }
 
-        if (slider.Maxed)
-            return;
 
         slider.value += 1;
 

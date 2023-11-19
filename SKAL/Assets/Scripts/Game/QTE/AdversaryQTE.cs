@@ -22,4 +22,11 @@ public class AdversaryQTE : QTE
             return false;
         }
     }
+
+    public override void Init()
+    {
+        _scaleToSucceed = GameManager.instance.precisionAmount;
+        base.Init();
+        
+    }
 }

@@ -16,7 +16,7 @@ public class PlayerBarrel : Barrel
 
     public override void Sip()
     {
-        _LitresToDring -= _playerStats.capacity;
+        _LitresToDring -= _playerStats.capacity * (1 + ((PlayerManager.instance.stats.BlueMagic * 5) * 0.01f));
 
         _slider.value = _LitresToDring * 20;
 

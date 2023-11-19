@@ -22,4 +22,11 @@ public class PlayerQTE : QTE
             return false;
         }
     }
+
+    public override void Init()
+    {
+        _scaleToSucceed = GameManager.instance.precisionAmount * (1 + ((PlayerManager.instance.stats.BlueMagic * 5) * 0.01f));
+        base.Init();
+        
+    }
 }

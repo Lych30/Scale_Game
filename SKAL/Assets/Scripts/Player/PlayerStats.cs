@@ -12,5 +12,9 @@ public class PlayerStats : ScriptableObject
     public float BaseCapacity; //HOW MUCH THE PLAYER CAN DRINK EACH SIP
     //ONE SIP ON AVERAGE IS 4CL SO WE WILL MULTIPLY THIS VALUE WITH THE CAPACITY
     public int magicPoints;
+    public int RedMagic;
+    public int BlueMagic;
+    public int GreenMagic;
     public int currency;
+    
 }
