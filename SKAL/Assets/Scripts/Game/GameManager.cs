@@ -199,32 +199,43 @@ public class GameManager : MonoBehaviour
         //ENABLE MAIN GAME INPUTS THERE
     }
 
-    public void GameEnd(bool victory)
+    public IEnumerator GameEnd(bool victory)
     {
-        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
-        PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = true;
-        _GameActive = false;
+        _versusPanelAnimator.Play("Versus_Entrance");
+        yield return new WaitForSeconds(2f);
 
         _playerQTE.gameObject.SetActive(false);
         _adversaryQTE.gameObject.SetActive(false);
+
         Destroy(_adversary);
 
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
 
-        if(victory)
+        if (victory)
         {
             _winsBeforeDifUp--;
 
             PlayerManager.instance.stats.currency += _adversaryStats.currencyReward;
             PlayerManager.instance.stats.magicPoints += _adversaryStats.magicPointsReward;
         }
-            
-        if( _winsBeforeDifUp <= 0)
+
+        if (_winsBeforeDifUp <= 0)
         {
             UpDifficulty();
             _winsBeforeDifUp = 3;
         }
+
+        _versusPanelAnimator.Play("Versus_Exit");
+        yield return new WaitForSeconds(0.5f);
+
+        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
+        PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = true;
+        _GameActive = false;
+
+
+
+        
         
         LoadAdversary();
     }
@@ -235,28 +246,9 @@ public class GameManager : MonoBehaviour
         if(_currentDifficulty < Difficulty.Einherjar)
             _currentDifficulty++;
 
-        /*
-        switch (_currentDifficulty)
-        {
-            case Difficulty.Easy:
-                _currentDifficulty++;
-                break;
-
-            case Difficulty.Medium:
-                _currentDifficulty++;
-                break;
-
-            case Difficulty.Hard:
-                _currentDifficulty++;
-                break;
-
-            case Difficulty.Einherjar:
-                break;
-            default:
-                break;
-               
-        }
-        */
+        //CHECK FOR NIGHT TIME WHEN DIFFICULTY IS IN HIGH
+        if (_currentDifficulty >= Difficulty.Hard)
+            DayCycleManager.instance.TriggerNight();
     }
 }
 

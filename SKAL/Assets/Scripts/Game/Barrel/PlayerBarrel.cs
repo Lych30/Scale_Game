@@ -29,7 +29,7 @@ public class PlayerBarrel : Barrel
         _slider.value = _LitresToDring * 20;
 
         if (_LitresToDring <= 0)
-            GameManager.instance.GameEnd(true);
+            StartCoroutine(GameManager.instance.GameEnd(true));
         //UPDATE VISUALS
     }
 

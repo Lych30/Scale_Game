@@ -30,6 +30,8 @@ public class PlayerManager : MonoBehaviour
     private float LerpDrunkRatio = 0;
     [SerializeField] UnityEngine.Rendering.VolumeProfile volumeProfile;
     UnityEngine.Rendering.Universal.DepthOfField DOF;
+    UnityEngine.Rendering.Universal.PaniniProjection PP;
+    UnityEngine.Rendering.Universal.ChromaticAberration CA;
 
     private void Awake()
     {
@@ -73,7 +75,13 @@ public class PlayerManager : MonoBehaviour
     public void ApplyBlurr()
     {
         if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
-        DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.GreenMagic * 5) * 0.01f)));
+            DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.GreenMagic * 5) * 0.01f)));
+
+        if (!volumeProfile.TryGet(out PP)) throw new System.NullReferenceException(nameof(PP));
+            PP.distance.Override(LerpDrunkRatio);
+
+        if (!volumeProfile.TryGet(out CA)) throw new System.NullReferenceException(nameof(CA));
+            CA.intensity.Override(LerpDrunkRatio);
 
     }
     public void AddAlcohol(float dose)
@@ -100,7 +108,7 @@ public class PlayerManager : MonoBehaviour
        
 
         if(DrunkRatio > 0)
-            DrunkRatio -= 0.001f;
+            DrunkRatio -= 0.00175f;
 
         if (DrunkRatio < 0)
             DrunkRatio = 0;

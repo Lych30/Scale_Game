@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -32,6 +33,7 @@ public class DayCycleManager : MonoBehaviour
         TriggerDay();
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
@@ -43,6 +45,7 @@ public class DayCycleManager : MonoBehaviour
             TriggerNight();
         }
     }
+#endif
 
     public void TriggerDay()
     {
