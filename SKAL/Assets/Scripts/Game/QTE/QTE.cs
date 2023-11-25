@@ -55,13 +55,20 @@ public abstract class QTE : MonoBehaviour
     {
         _magicParticleSystem.Play();
 
-        if (streak <= 0)
+        if (streak <= 4)
             return;
 
-        for(int i = 0; i < streak; i++)
-        {
-            _RuneParticleSystem_Tiers[i].Play();
-        }
+        if (PlayerManager.instance.stats.RedMagic > 0)
+            _RuneParticleSystem_Tiers[0].Play();
+
+        if (PlayerManager.instance.stats.BlueMagic > 0)
+            _RuneParticleSystem_Tiers[1].Play();
+
+        if (PlayerManager.instance.stats.GreenMagic > 0)
+            _RuneParticleSystem_Tiers[2].Play();
+
+        if(PlayerManager.instance.stats.GreenMagic == 10 && PlayerManager.instance.stats.RedMagic == 10 && PlayerManager.instance.stats.BlueMagic == 10)
+            _RuneParticleSystem_Tiers[3].Play();
     }
     public virtual bool Try() { return false; }
 

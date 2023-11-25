@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class StatsMenu : MonoBehaviour
 {
+    public static StatsMenu instance;
     Animator animator;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+
+        instance = this;
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();

@@ -9,7 +9,7 @@ public class DayCycleManager : MonoBehaviour
     public static DayCycleManager instance;
 
     [Header("GLOBAL ILLUMINATION")]
-    [SerializeField] Light2D _globalLight;
+    [SerializeField] Light2D[] _globalLights;
     [SerializeField] float _dayIntensity;
     [SerializeField] float _nightIntensity;
 
@@ -50,7 +50,9 @@ public class DayCycleManager : MonoBehaviour
     public void TriggerDay()
     {
         _spriteRenderer.color = _dayColorModifier;
-        _globalLight.intensity = _dayIntensity;
+
+        foreach (Light2D light in _globalLights)
+            light.intensity = _dayIntensity;
 
         foreach (Torch torch in levelTorchs)
         {
@@ -61,7 +63,10 @@ public class DayCycleManager : MonoBehaviour
     public void TriggerNight()
     {
         _spriteRenderer.color = _nightColorModifier;
-        _globalLight.intensity = _nightIntensity;
+
+        foreach(Light2D light in _globalLights)
+            light.intensity = _nightIntensity;
+
 
         foreach (Torch torch in levelTorchs)
         {

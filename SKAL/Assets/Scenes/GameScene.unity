@@ -12995,7 +12995,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 0.9988938
+    height: 0.99887896
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -13004,7 +13004,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -13013,7 +13013,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &519420032
@@ -13025,7 +13025,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5659981, y: 0.37500024, z: -11}
+  m_LocalPosition: {x: -0.5660019, y: 0.37500024, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19122,7 +19122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1704b2391915fb2429d169ff0e1c7f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _globalLight: {fileID: 619394801}
+  _globalLights:
+  - {fileID: 619394801}
   _dayIntensity: 1
   _nightIntensity: 0.5
   _spriteRenderer: {fileID: 1410124571}
@@ -31235,7 +31236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 30.285, y: -55.682}
+  m_AnchoredPosition: {x: 30.285004, y: -55.682}
   m_SizeDelta: {x: 60.569, y: 63.364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050505778
@@ -63722,12 +63723,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 564969688}
-  - {fileID: 1127439357}
-  - {fileID: 705926870}
   - {fileID: 1553280780}
+  - {fileID: 564969688}
+  - {fileID: 705926870}
   - {fileID: 583122828}
   - {fileID: 1489808597}
+  - {fileID: 1127439357}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -82490,7 +82491,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: 3
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
@@ -82501,8 +82502,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.008449972, y: 0.0042500496, z: 0}
-    m_Extent: {x: 0.99995, y: 6.90385, z: 0}
+    m_Center: {x: -0.0021499991, y: -0.0032999516, z: 0}
+    m_Extent: {x: 1.00615, y: 6.9056997, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

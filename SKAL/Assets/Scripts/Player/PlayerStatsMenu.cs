@@ -9,7 +9,7 @@ public class PlayerStatsMenu : MonoBehaviour
     bool IsOpen = false;
     private void Start()
     {
-        menu = FindObjectOfType<StatsMenu>();
+        menu = StatsMenu.instance;
     }
     public void OnOpenStats(InputAction.CallbackContext context)
     {

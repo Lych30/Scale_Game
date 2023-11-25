@@ -161,6 +161,8 @@ public class GameManager : MonoBehaviour
     {
         _GameActive = true;
 
+        StatsMenu.instance.gameObject.SetActive(false);
+
         _versusPanelAnimator.Play("Versus_Entrance");
         yield return new WaitForSeconds(1.0f);
 
@@ -201,6 +203,11 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GameEnd(bool victory)
     {
+        if (_barAnimator)
+            _barAnimator.Play("Bar_Exit");
+
+        yield return new WaitForSeconds(0.5f);
+
         _versusPanelAnimator.Play("Versus_Entrance");
         yield return new WaitForSeconds(2f);
 
@@ -209,8 +216,6 @@ public class GameManager : MonoBehaviour
 
         Destroy(_adversary);
 
-        if (_barAnimator)
-            _barAnimator.Play("Bar_Exit");
 
         if (victory)
         {
@@ -233,10 +238,9 @@ public class GameManager : MonoBehaviour
         PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = true;
         _GameActive = false;
 
+        StatsMenu.instance.gameObject.SetActive(true);
 
 
-        
-        
         LoadAdversary();
     }
 
