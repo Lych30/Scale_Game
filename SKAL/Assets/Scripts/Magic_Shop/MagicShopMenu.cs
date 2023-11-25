@@ -68,10 +68,11 @@ public sealed class MagicShopMenu : MonoBehaviour
                 break;
         }
 
+        PlayerManager.instance.stats.magicPoints--;
 
         slider.value += 1;
 
-        if (slider.value > slider.maxValue)
+        if (slider.value >= slider.maxValue)
         {
             slider.maxValue = slider.value;
             slider.Maxed = true;

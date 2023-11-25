@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: you
   tolerance: 0.2
-  BaseTolerance: 0.2
   capacity: 0.04
-  BaseCapacity: 0.04
   magicPoints: 0
   RedMagic: 0
   BlueMagic: 0
