@@ -13,6 +13,8 @@ public class PlayerStatsMenu : MonoBehaviour
     }
     public void OnOpenStats(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
+
         IsOpen = !IsOpen;
 
         if (IsOpen)
