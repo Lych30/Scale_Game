@@ -50,8 +50,6 @@ public class Shop : MonoBehaviour
             item.gameObject.SetActive(false);
         }
 
-        if (_vertLGroups[0].transform.childCount > 0)
-            ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
     }
     public void LoadShop()
     {
@@ -59,6 +57,9 @@ public class Shop : MonoBehaviour
         {
             item.SetActive(true);
         }
+
+        if (_vertLGroups[0].transform.childCount > 0)
+            ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
     }
     /*
     public void LoadShop()

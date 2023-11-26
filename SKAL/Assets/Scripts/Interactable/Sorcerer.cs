@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sorcerer : MonoBehaviour, IInteractable
 {
-    [SerializeField] GameObject _magicShopUI;
+    [SerializeField] MagicShopMenu _magicShopUI;
     [SerializeField] Animator _magicShopAnimator;
     [SerializeField] GameObject _annotation;
     [SerializeField] GameObject _selectedButton;
@@ -39,7 +39,8 @@ public class Sorcerer : MonoBehaviour, IInteractable
         _magicShopAnimator.Play("MagicShop_Enter");
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
 
-        if(_selectedButton)
+        MagicShopMenu.instance.EnableButtons(true);
+        if (_selectedButton)
             ESReference.instance.eventSystem.SetSelectedGameObject(_selectedButton);
     }
 
@@ -48,8 +49,14 @@ public class Sorcerer : MonoBehaviour, IInteractable
         isOpen = false;
         _magicShopAnimator.Play("MagicShop_Exit");
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = true;
+        StartCoroutine(waitToenable());
     }
 
+    public IEnumerator waitToenable()
+    {
+        yield return new WaitForSeconds(1f);
+        MagicShopMenu.instance.EnableButtons(false);
+    }
     IEnumerator canInteractChange()
     {
         yield return new WaitForSeconds(1.0f);

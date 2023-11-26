@@ -5758,6 +5758,9 @@ MonoBehaviour:
   _toleranceTMP: {fileID: 2118161433}
   _magicPointsTMP: {fileID: 2104133584}
   _barrel: {fileID: 0}
+  _litresInBlood: 0
+  DrunkRatio: 0
+  LerpDrunkRatio: 0
   volumeProfile: {fileID: 11400000, guid: cb29f1216488ceb46976ccb889420ce5, type: 2}
 --- !u!114 &172222462
 MonoBehaviour:
@@ -6206,7 +6209,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 244422733}
   m_OnClick:
     m_PersistentCalls:
@@ -12998,8 +13001,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.9993265
-    height: 1
+    width: 1
+    height: 0.99975586
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -13029,7 +13032,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56600094, y: 0.37500024, z: -11}
+  m_LocalPosition: {x: -0.566, y: 0.37500024, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13265,7 +13268,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 555679520}
   m_OnClick:
     m_PersistentCalls:
@@ -19633,7 +19636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -30446,7 +30449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a0357535049c5449b759e43f0f2c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _magicShopUI: {fileID: 1489808596}
+  _magicShopUI: {fileID: 1489808598}
   _magicShopAnimator: {fileID: 818707067}
   _annotation: {fileID: 1331085415}
   _selectedButton: {fileID: 555679517}
@@ -32430,7 +32433,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1277786334}
   m_OnClick:
     m_PersistentCalls:
@@ -53033,6 +53036,10 @@ MonoBehaviour:
   _greenSlider: {fileID: 1364219263}
   _blueSlider: {fileID: 1038958641}
   _centralCrystal: {fileID: 1163976165}
+  buttons:
+  - {fileID: 555679519}
+  - {fileID: 244422732}
+  - {fileID: 1277786333}
 --- !u!1 &1493832632
 GameObject:
   m_ObjectHideFlags: 0
@@ -63938,7 +63945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -82658,8 +82665,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.001949966, y: -0.0039999485, z: 0}
-    m_Extent: {x: 1.00425, y: 6.8983, z: 0}
+    m_Center: {x: -0.0088, y: 0.0018501282, z: 0}
+    m_Extent: {x: 1.0005, y: 6.90655, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

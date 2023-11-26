@@ -10,6 +10,7 @@ public sealed class MagicShopMenu : MonoBehaviour
     [SerializeField] private MagicSlider _greenSlider;
     [SerializeField] private MagicSlider _blueSlider;
     [SerializeField] GameObject _centralCrystal;
+    [SerializeField] Button[] buttons;
     /*
      rouge = % de capacité en plus
      vert = % de reduction de l'effet de l'alcool
@@ -23,6 +24,13 @@ public sealed class MagicShopMenu : MonoBehaviour
         instance = this;
 
     }
+
+    public void EnableButtons(bool enable)
+    {
+        foreach (var button in buttons)
+            button.interactable = enable;
+    }
+
 
     public void AddMagic(int color)
     {
