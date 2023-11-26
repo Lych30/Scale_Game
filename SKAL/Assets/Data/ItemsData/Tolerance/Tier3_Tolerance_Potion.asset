@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5597eba046dd04498a2353d556e001, type: 3}
   m_Name: Tier3_Tolerance_Potion
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Great Tolerance Potion
   itemCost: 5
   itemImage: {fileID: 0}
   itemDescription: 

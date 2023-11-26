@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Ragnar
   title: local farmer
   tolerance: 3
-  capacity: 0.16
-  precision: 0.125
+  capacity: 0.4
+  precision: 0.1
   difficulty: 2
   gfx: {fileID: 7803241986700211839, guid: 4eaa451d74ab72243a9e6038420c7a9f, type: 3}
   currencyReward: 7

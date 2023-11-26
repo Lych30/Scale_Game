@@ -60,6 +60,17 @@ public class Shop : MonoBehaviour
 
         if (_vertLGroups[0].transform.childCount > 0)
             ESReference.instance.eventSystem.SetSelectedGameObject(_vertLGroups[0].transform.GetChild(0).GetChild(0).gameObject);
+
+        foreach (GameObject item in _Activeitems)
+        {
+            if(item.GetComponent<Item>().canBeBought)
+            {
+                ESReference.instance.eventSystem.SetSelectedGameObject(item.transform.GetChild(0).gameObject);
+                break;
+            }
+        }
+
+        
     }
     /*
     public void LoadShop()

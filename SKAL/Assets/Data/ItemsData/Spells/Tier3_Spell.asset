@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5597eba046dd04498a2353d556e001, type: 3}
   m_Name: Tier3_Spell
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Great Scroll Boost
   itemCost: 10
   itemImage: {fileID: 0}
   itemDescription: 
-  toleranceBuff: 0.8
-  capacityBuff: 0.8
+  toleranceBuff: 0.08
+  capacityBuff: 0.08

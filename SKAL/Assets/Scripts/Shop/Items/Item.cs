@@ -20,6 +20,7 @@ public class Item : MonoBehaviour, IItemEffect
     [SerializeField] Image _image;
     [SerializeField] TextMeshProUGUI _description;
     bool _canBeBought = true;
+    public bool canBeBought { get { return _canBeBought; } }
     public void Init(ItemData data)
     {
         _data = data;
