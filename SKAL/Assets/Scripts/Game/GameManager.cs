@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     SpriteRenderer _ennemyRenderer;
     GameObject _adversary;
     AdversaryStats _adversaryStats;
-    
+    [SerializeField] GameObject _vaArena;
 
     private void Awake()
     {
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         _versusPanelAnimator.Play("Versus_Entrance");
         yield return new WaitForSeconds(2f);
@@ -253,6 +253,9 @@ public class GameManager : MonoBehaviour
         //CHECK FOR NIGHT TIME WHEN DIFFICULTY IS IN HIGH
         if (_currentDifficulty >= Difficulty.Hard)
             DayCycleManager.instance.TriggerNight();
+
+        if(_currentDifficulty == Difficulty.Einherjar && !_vaArena.activeInHierarchy)
+            _vaArena.SetActive(true);
     }
 }
 
