@@ -16,5 +16,8 @@ MonoBehaviour:
   title: 
   tolerance: 5
   capacity: 1.3
-  precision: 0.08
+  precision: 0.04
   difficulty: 3
+  gfx: {fileID: 0}
+  currencyReward: 0
+  magicPointsReward: 0

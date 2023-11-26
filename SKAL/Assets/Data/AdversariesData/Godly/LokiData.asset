@@ -15,6 +15,9 @@ MonoBehaviour:
   name: Loki
   title: 
   tolerance: 5
-  capacity: 0.9
-  precision: 0.03
+  capacity: 1
+  precision: 0.02
   difficulty: 3
+  gfx: {fileID: 0}
+  currencyReward: 0
+  magicPointsReward: 0

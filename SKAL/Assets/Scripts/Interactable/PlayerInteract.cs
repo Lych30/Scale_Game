@@ -10,9 +10,13 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         IInteractable TempInteractable = collision.GetComponent<IInteractable>();
 
         if (TempInteractable == null || TempInteractable == _interactable)
+            return;
+
+        if (GameManager.instance.gameActive)
             return;
 
         _interactable = collision.GetComponent<IInteractable>();

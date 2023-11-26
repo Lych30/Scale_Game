@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -10,12 +11,12 @@ public class PlayerBarrel : Barrel
     PlayerStats _playerStats;
     
 
-    public override void Init(int litres, PlayerStats stats, Slider slider)
+    public override void Init(int litres, PlayerStats stats, Slider slider,Difficulty difficulty)
     {
         _LitresToDring = litres;
         _playerStats = stats;
         _slider = slider;
-        
+        SetUpVisuals(difficulty);
         SetUpSliderValues();
     }
 
@@ -33,5 +34,9 @@ public class PlayerBarrel : Barrel
         //UPDATE VISUALS
     }
 
-    
+    protected override void SetUpVisuals(Difficulty difficulty)
+    {
+        base.SetUpVisuals(difficulty);
+    }
+
 }

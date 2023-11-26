@@ -102,8 +102,8 @@ public class GameManager : MonoBehaviour
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         
-        StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider);
-        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider);
+        StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider, _currentDifficulty);
+        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider, _currentDifficulty);
 
 
         _adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
@@ -199,7 +199,6 @@ public class GameManager : MonoBehaviour
         foreach (Transform countDownElement in _CountDownContainer)
         {
             countDownElement.GetComponent<Animator>().Play("Countdown");
-            Debug.Log(countDownElement.name);
             yield return new WaitForSeconds(1);
         }
         yield return new WaitForSeconds(1);
