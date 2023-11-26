@@ -9,6 +9,7 @@ public sealed class MagicShopMenu : MonoBehaviour
     [SerializeField] private MagicSlider _redSlider;
     [SerializeField] private MagicSlider _greenSlider;
     [SerializeField] private MagicSlider _blueSlider;
+    [SerializeField] GameObject _centralCrystal;
     /*
      rouge = % de capacité en plus
      vert = % de reduction de l'effet de l'alcool
@@ -77,6 +78,9 @@ public sealed class MagicShopMenu : MonoBehaviour
             slider.maxValue = slider.value;
             slider.Maxed = true;
         }
+
+        if(_redSlider.Maxed && _blueSlider.Maxed && _greenSlider.Maxed)
+            _centralCrystal.SetActive(true);
     }
 
     
