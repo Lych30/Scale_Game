@@ -123,38 +123,51 @@ public class GameManager : MonoBehaviour
     public AdversaryStats GetCorrectStats(Difficulty difficulty)
     {
         int index = 0;
+        AdversaryStats stats;
         switch (difficulty)
         {
             case Difficulty.Easy:
                 index = UnityEngine.Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
                 _precisionAmount = PrecisionAmount_Tier1;
-                return _EasyAdversaryStats[index];
+                stats = _EasyAdversaryStats[index];
+                _EasyAdversaryStats.RemoveAt(index);
+                break;
 
             case Difficulty.Medium:
                 index = UnityEngine.Random.Range(0, _MediumAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier2;
                 _precisionAmount = PrecisionAmount_Tier2;
-                return _MediumAdversaryStats[index];
+                stats = _MediumAdversaryStats[index];
+                _MediumAdversaryStats.RemoveAt(index);
+                break;
 
             case Difficulty.Hard:
                 index = UnityEngine.Random.Range(0, _HardAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier3;
                 _precisionAmount = PrecisionAmount_Tier3;
-                return _HardAdversaryStats[index];
+                stats = _HardAdversaryStats[index];
+                _HardAdversaryStats.RemoveAt(index);
+                break;
 
             case Difficulty.Einherjar:
                 index = UnityEngine.Random.Range(0, _RagnarokAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier4;
                 _precisionAmount = PrecisionAmount_Tier4;
-                return _RagnarokAdversaryStats[index];
+                stats = _RagnarokAdversaryStats[index];
+                _RagnarokAdversaryStats.RemoveAt(index);
+                break;
 
             default:
                 index = UnityEngine.Random.Range(0, _EasyAdversaryStats.Count);
                 _LitresToDring = _LitresToDring_Tier1;
                 _precisionAmount = PrecisionAmount_Tier1;
-                return _EasyAdversaryStats[index];
+                stats = _EasyAdversaryStats[index];
+                _EasyAdversaryStats.RemoveAt(index);
+                break;
         }
+
+        return stats;
     }
 
     public IEnumerator StartGame()
@@ -224,7 +237,10 @@ public class GameManager : MonoBehaviour
 
             PlayerManager.instance.stats.currency += _adversaryStats.currencyReward;
             PlayerManager.instance.stats.magicPoints += _adversaryStats.magicPointsReward;
+
+            LoadAdversary();
         }
+       
 
         if (_winsBeforeDifUp <= 0)
         {
@@ -242,7 +258,7 @@ public class GameManager : MonoBehaviour
         StatsMenu.instance.gameObject.SetActive(true);
 
 
-        LoadAdversary();
+        
     }
 
     private void UpDifficulty()
