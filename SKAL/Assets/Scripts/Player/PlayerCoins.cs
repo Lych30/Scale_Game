@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerCoins : MonoBehaviour
 {
     public static PlayerCoins instance;
-    [SerializeField] int _currency;
-    [SerializeField] TextMeshProUGUI _currencyText;
+    [SerializeField] TextMeshProUGUI[] _currencyTexts;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -18,27 +17,28 @@ public class PlayerCoins : MonoBehaviour
     }
     private void Start()
     {
-        UpdateCurrencyText();
+        UpdateCurrencyTexts();
     }
     public void AddCurrency(int amount)
     {
-        _currency += amount;
-        UpdateCurrencyText();
+        PlayerManager.instance.stats.currency += amount;
+        UpdateCurrencyTexts();
     }
     public bool CheckCurrency(int amount)
     {
-        return (amount <= _currency);
+        return (amount <= PlayerManager.instance.stats.currency);
     }
     public void RemoveCurrency(int amount)
     {
-        _currency -= amount;
-        UpdateCurrencyText();
+        PlayerManager.instance.stats.currency -= amount;
+        UpdateCurrencyTexts();
     }
-    private void UpdateCurrencyText()
+    private void UpdateCurrencyTexts()
     {
-        if (_currencyText == null)
+        if (_currencyTexts == null)
             return;
 
-        _currencyText.text = _currency.ToString();
+        foreach (TextMeshProUGUI currencytext in _currencyTexts)
+            currencytext.text = "currency : " + PlayerManager.instance.stats.currency.ToString();
     }
 }

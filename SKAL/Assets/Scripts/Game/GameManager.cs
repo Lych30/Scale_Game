@@ -238,15 +238,17 @@ public class GameManager : MonoBehaviour
             PlayerManager.instance.stats.currency += _adversaryStats.currencyReward;
             PlayerManager.instance.stats.magicPoints += _adversaryStats.magicPointsReward;
 
+            if (_winsBeforeDifUp <= 0)
+            {
+                UpDifficulty();
+                _winsBeforeDifUp = 3;
+            }
+
             LoadAdversary();
         }
        
 
-        if (_winsBeforeDifUp <= 0)
-        {
-            UpDifficulty();
-            _winsBeforeDifUp = 3;
-        }
+        
 
         _versusPanelAnimator.Play("Versus_Exit");
         yield return new WaitForSeconds(0.5f);

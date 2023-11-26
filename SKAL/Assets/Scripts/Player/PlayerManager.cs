@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour
     [Header("STATS UI")]
     [SerializeField] TextMeshProUGUI _capacityTMP;
     [SerializeField] TextMeshProUGUI _toleranceTMP;
-    [SerializeField] TextMeshProUGUI _currencyTMP;
     [SerializeField] TextMeshProUGUI _magicPointsTMP;
 
     public PlayerBarrel _barrel;
@@ -66,7 +65,6 @@ public class PlayerManager : MonoBehaviour
     {
         _capacityTMP.text = "Capacity : " + _stats.capacity.ToString();
         _toleranceTMP.text = "Tolerance : " + _stats.tolerance.ToString();
-        _currencyTMP.text = "currency : " + _stats.currency.ToString();
         _magicPointsTMP.text = "Magic Points : " + _stats.magicPoints.ToString();
 
       

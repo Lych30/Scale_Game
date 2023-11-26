@@ -37,9 +37,13 @@ public class Item : MonoBehaviour, IItemEffect
 
     public void BuyItemClick()
     {
+        if (!PlayerCoins.instance.CheckCurrency(_cost))
+            return;
+
         if (!_canBeBought)
             return;
 
+        PlayerCoins.instance.RemoveCurrency(_cost);
         _canBeBought = false;
         SetVisual();
         _disabledButton.SetActive(true);
