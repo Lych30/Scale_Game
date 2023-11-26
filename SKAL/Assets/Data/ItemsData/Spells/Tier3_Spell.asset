@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tier3_Spell
   m_EditorClassIdentifier: 
   itemName: 
-  itemCost: 0
+  itemCost: 10
   itemImage: {fileID: 0}
   itemDescription: 
-  toleranceBuff: 0
-  capacityBuff: 0
+  toleranceBuff: 0.8
+  capacityBuff: 0.8

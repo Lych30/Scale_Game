@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tier1_Capacity_Potion
   m_EditorClassIdentifier: 
   itemName: Minor Capacity Potion
-  itemCost: 2
+  itemCost: 1
   itemImage: {fileID: 0}
   itemDescription: Tier 1 Capacity Potion
   toleranceBuff: 0

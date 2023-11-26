@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tier3_Capacity_Potion
   m_EditorClassIdentifier: 
   itemName: Great Capacity Potion
-  itemCost: 10
+  itemCost: 5
   itemImage: {fileID: 0}
   itemDescription: Tier 3 Capacity Potion
   toleranceBuff: 0

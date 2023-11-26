@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tier2_Tolerance_Potion
   m_EditorClassIdentifier: 
   itemName: 
-  itemCost: 0
+  itemCost: 3
   itemImage: {fileID: 0}
   itemDescription: 
-  toleranceBuff: 0
+  toleranceBuff: 0.16
   capacityBuff: 0

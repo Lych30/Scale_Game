@@ -19,5 +19,5 @@ MonoBehaviour:
   precision: 0.125
   difficulty: 2
   gfx: {fileID: 7803241986700211839, guid: aa8448d559360d14fb57af1352326f41, type: 3}
-  currencyReward: 0
-  magicPointsReward: 0
+  currencyReward: 8
+  magicPointsReward: 1
