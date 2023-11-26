@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
-  m_Name: Medium_AdversaryStats
+  m_Name: Easy_AdversaryStats_1
   m_EditorClassIdentifier: 
-  name: Eivor
-  title: the neophite
-  tolerance: 2
-  capacity: 0.08
-  precision: 0.2
-  difficulty: 1
+  name: Bjorn
+  title: drunken
+  tolerance: 1
+  capacity: 0.04
+  precision: 0.3
+  difficulty: 0
+  gfx: {fileID: 7803241986700211839, guid: 77a9e58dda2efa747a9c160f1166dafc, type: 3}
+  currencyReward: 0
+  magicPointsReward: 0
