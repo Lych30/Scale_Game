@@ -20,4 +20,4 @@ MonoBehaviour:
   difficulty: 1
   gfx: {fileID: 7803241986700211839, guid: 14f0035787a737c4eaa151f4a2fe1214, type: 3}
   currencyReward: 5
-  magicPointsReward: 2
+  magicPointsReward: 3

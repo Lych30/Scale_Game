@@ -16,5 +16,5 @@ MonoBehaviour:
   itemCost: 1
   itemImage: {fileID: 0}
   itemDescription: 
-  toleranceBuff: 0.04
+  toleranceBuff: 0.01
   capacityBuff: 0

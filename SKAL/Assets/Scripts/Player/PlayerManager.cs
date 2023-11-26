@@ -24,9 +24,9 @@ public class PlayerManager : MonoBehaviour
     public PlayerBarrel _barrel;
     public PlayerStats Stats { get { return _stats; } }
 
-    float _litresInBlood = 0;
-    float DrunkRatio = 0;
-    private float LerpDrunkRatio = 0;
+    [SerializeField]float _litresInBlood = 0;
+    [SerializeField]float DrunkRatio = 0;
+    [SerializeField]private float LerpDrunkRatio = 0;
     [SerializeField] UnityEngine.Rendering.VolumeProfile volumeProfile;
     UnityEngine.Rendering.Universal.DepthOfField DOF;
     UnityEngine.Rendering.Universal.PaniniProjection PP;
@@ -66,21 +66,19 @@ public class PlayerManager : MonoBehaviour
         _capacityTMP.text = "Capacity : " + _stats.capacity.ToString();
         _toleranceTMP.text = "Tolerance : " + _stats.tolerance.ToString();
         _magicPointsTMP.text = "Magic Points : " + _stats.magicPoints.ToString();
-
-      
     }
 
     
     public void ApplyBlurr()
     {
         if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
-            DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.GreenMagic * 5) * 0.01f)));
+            DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f)));
 
         if (!volumeProfile.TryGet(out PP)) throw new System.NullReferenceException(nameof(PP));
-            PP.distance.Override(LerpDrunkRatio);
+            PP.distance.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f));
 
         if (!volumeProfile.TryGet(out CA)) throw new System.NullReferenceException(nameof(CA));
-            CA.intensity.Override(LerpDrunkRatio);
+            CA.intensity.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f));
 
     }
     public void AddAlcohol(float dose)
@@ -90,6 +88,8 @@ public class PlayerManager : MonoBehaviour
         if (_litresInBlood > stats.tolerance)
         {
             DrunkRatio += 0.1f;
+            DrunkRatio = Mathf.Clamp01(DrunkRatio);
+
             Mathf.Clamp01(DrunkRatio);
         }
 
@@ -111,6 +111,11 @@ public class PlayerManager : MonoBehaviour
 
         if (DrunkRatio < 0)
             DrunkRatio = 0;
+
+        LerpDrunkRatio = Mathf.Clamp01(LerpDrunkRatio);
+
+        if (LerpDrunkRatio < 0.01f)
+            LerpDrunkRatio = 0f;
 
         ApplyBlurr();
         

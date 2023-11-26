@@ -21,7 +21,7 @@ public class PlayerBarrel : Barrel
 
     public override void Sip()
     {
-        float sipValue = _playerStats.capacity * (1 + ((PlayerManager.instance.stats.BlueMagic * 5) * 0.01f));
+        float sipValue = _playerStats.capacity * (1 + ((PlayerManager.instance.stats.RedMagic * 5) * 0.01f));
         _LitresToDring -= sipValue;
 
         PlayerManager.instance.AddAlcohol(sipValue);

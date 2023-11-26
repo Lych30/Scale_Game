@@ -70,6 +70,7 @@ public sealed class MagicShopMenu : MonoBehaviour
         }
 
         PlayerManager.instance.stats.magicPoints--;
+        PlayerManager.instance.UpdateStats();
 
         slider.value += 1;
 

@@ -17,4 +17,4 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemDescription: Tier 2 Capacity Potion
   toleranceBuff: 0
-  capacityBuff: 0.16
+  capacityBuff: 0.2

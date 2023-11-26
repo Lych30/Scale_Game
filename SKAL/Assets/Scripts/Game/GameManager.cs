@@ -235,8 +235,9 @@ public class GameManager : MonoBehaviour
         {
             _winsBeforeDifUp--;
 
-            PlayerManager.instance.stats.currency += _adversaryStats.currencyReward;
+            PlayerCoins.instance.AddCurrency(_adversaryStats.currencyReward);
             PlayerManager.instance.stats.magicPoints += _adversaryStats.magicPointsReward;
+            PlayerManager.instance.UpdateStats();
 
             if (_winsBeforeDifUp <= 0)
             {
