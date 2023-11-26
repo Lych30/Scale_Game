@@ -26,8 +26,6 @@ public abstract class QTE : MonoBehaviour
 
     private void Update()
     {
-       
-
        if(_progression < GameManager.instance.qteTime)
        {
             _progression += (Time.deltaTime * _circleSpeed);
@@ -36,10 +34,11 @@ public abstract class QTE : MonoBehaviour
        }
         
         _progression = 0;
-
+        streak = 0;
+        _circleSpeed = 1;
     }
 
-    protected void HandleCircleSpeedAndStreak()
+    protected virtual void HandleCircleSpeedAndStreak()
     {
         _circleSpeed += 0.15f;
         if(_circleSpeed > _maxCircleSpeed)

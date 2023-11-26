@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
     {
         _stats.ResetStats();
         UpdateStats();
+        ResetVolumeValues();
     }
 
     public void TryQTE(InputAction.CallbackContext context)
@@ -115,5 +116,17 @@ public class PlayerManager : MonoBehaviour
 
         ApplyBlurr();
         
+    }
+
+    public void ResetVolumeValues()
+    {
+        if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
+        DOF.focusDistance.Override(2 );
+
+        if (!volumeProfile.TryGet(out PP)) throw new System.NullReferenceException(nameof(PP));
+        PP.distance.Override(0);
+
+        if (!volumeProfile.TryGet(out CA)) throw new System.NullReferenceException(nameof(CA));
+        CA.intensity.Override(0);
     }
 }

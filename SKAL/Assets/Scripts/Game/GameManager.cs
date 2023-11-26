@@ -206,13 +206,14 @@ public class GameManager : MonoBehaviour
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
 
+        _playerQTE.gameObject.SetActive(false);
+        _adversaryQTE.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(0.25f);
 
         _versusPanelAnimator.Play("Versus_Entrance");
         yield return new WaitForSeconds(2f);
 
-        _playerQTE.gameObject.SetActive(false);
-        _adversaryQTE.gameObject.SetActive(false);
 
         Destroy(_adversary);
 

@@ -29,4 +29,9 @@ public class AdversaryQTE : QTE
         base.Init();
         
     }
+
+    protected override void HandleCircleSpeedAndStreak()
+    {
+        base.HandleCircleSpeedAndStreak();
+    }
 }
