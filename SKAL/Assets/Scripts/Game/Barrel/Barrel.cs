@@ -9,7 +9,7 @@ public class Barrel : MonoBehaviour
     [SerializeField] protected float _LitresToDring;
     [SerializeField] protected Slider _slider;
     [SerializeField] protected GameObject[] _visuals;
-    protected SpriteRenderer _currentVisual;
+    private GameObject _currentVisual;
     public virtual void Init(int litres, PlayerStats stats, Slider slider, Difficulty difficulty)
     {
     }
@@ -43,8 +43,12 @@ public class Barrel : MonoBehaviour
             }
 
             _visuals[i].SetActive(true);
-
-            _currentVisual = _visuals[i].GetComponent<SpriteRenderer>();
+            _currentVisual = _visuals[i];
         }
+    }
+
+    public void DisableVisual()
+    {
+        _currentVisual.SetActive(false);
     }
 }

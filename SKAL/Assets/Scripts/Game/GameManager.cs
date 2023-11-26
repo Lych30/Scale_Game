@@ -102,8 +102,7 @@ public class GameManager : MonoBehaviour
         PlayerManager.instance._barrel = StageReference.instance.playerBarrel;
         Vector3 adversaryPos = new Vector3(StageReference.instance.adversaryBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
         
-        StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider, _currentDifficulty);
-        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.Stats, _playerSlider, _currentDifficulty);
+        
 
 
         _adversary = Instantiate(_adversaryPrefab, adversaryPos, Quaternion.identity);
@@ -179,7 +178,10 @@ public class GameManager : MonoBehaviour
         _versusPanelAnimator.Play("Versus_Entrance");
         yield return new WaitForSeconds(1.0f);
 
+        StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider, _currentDifficulty);
+        StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.stats, _playerSlider, _currentDifficulty);
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
+        
         yield return new WaitForSeconds(1.25f);
 
         if (_ennemyRenderer != null)
@@ -228,7 +230,8 @@ public class GameManager : MonoBehaviour
 
 
         Destroy(_adversary);
-
+        StageReference.instance.adversaryBarrel.DisableVisual();
+        StageReference.instance.playerBarrel.DisableVisual();
 
         if (victory)
         {

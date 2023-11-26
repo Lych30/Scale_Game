@@ -70,8 +70,8 @@ public class Item : MonoBehaviour, IItemEffect
 
     public void ApplyItemStats(ItemData data)
     {
-        PlayerManager.instance.Stats.capacity += data.capacityBuff;
-        PlayerManager.instance.Stats.tolerance += data.toleranceBuff;
+        PlayerManager.instance.stats.capacity += data.capacityBuff;
+        PlayerManager.instance.stats.tolerance += data.toleranceBuff;
         PlayerManager.instance.UpdateStats();
     }
 }

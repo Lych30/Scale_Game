@@ -16,6 +16,7 @@ public abstract class QTE : MonoBehaviour
     [SerializeReference] protected ParticleSystem[] _RuneParticleSystem_Tiers;
 
     protected float streak = 0;
+
     [Space(20)]
     [Header("DEBUG")]
     [SerializeReference] float ratio = 0;
@@ -54,7 +55,7 @@ public abstract class QTE : MonoBehaviour
     {
         _magicParticleSystem.Play();
 
-        if (streak <= 4)
+        if (streak < 4)
             return;
 
         if (PlayerManager.instance.stats.RedMagic > 0)

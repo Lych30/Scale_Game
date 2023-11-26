@@ -22,7 +22,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _magicPointsTMP;
 
     public PlayerBarrel _barrel;
-    public PlayerStats Stats { get { return _stats; } }
 
     [SerializeField]float _litresInBlood = 0;
     [SerializeField]float DrunkRatio = 0;
