@@ -16,7 +16,8 @@ MonoBehaviour:
   title: drunken
   tolerance: 1
   capacity: 0.04
-  precision: 0.3
+  outsidePrecision: 0.3
+  insidePrecision: 0.15
   difficulty: 0
   gfx: {fileID: 7803241986700211839, guid: 77a9e58dda2efa747a9c160f1166dafc, type: 3}
   currencyReward: 2

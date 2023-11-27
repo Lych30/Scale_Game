@@ -36,7 +36,7 @@ public class AdversaryManager : MonoBehaviour
 
     public void ResetQTEInteractionStatus()
     {
-        _timeOfClick = (1 - GameManager.instance.precisionAmount) + Random.Range(0.15f, -_stats.precision) / speedRatio;
+        _timeOfClick = ((1 - GameManager.instance.precisionAmount) + Random.Range(-_stats.outsidePrecision,_stats.insidePrecision)) / speedRatio;
     }
 
     public void TryQTE()

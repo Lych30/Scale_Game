@@ -16,7 +16,8 @@ MonoBehaviour:
   title: local farmer
   tolerance: 3
   capacity: 0.8
-  precision: 0.05
+  outsidePrecision: 0.075
+  insidePrecision: 0.15
   difficulty: 2
   gfx: {fileID: 7803241986700211839, guid: e5d8b622bd39db746a5a370735875ca8, type: 3}
   currencyReward: 6

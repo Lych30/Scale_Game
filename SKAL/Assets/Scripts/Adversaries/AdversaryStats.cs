@@ -9,7 +9,8 @@ public class AdversaryStats : ScriptableObject
     public string title;
     public int tolerance; //WHEN THE PLAYER WILL START TO FEEL DIZZY
     public float capacity; //HOW MUCH THE PLAYER CAN DRINK EACH SIP
-    public float precision; //PRECISION ON THE QTE
+    public float outsidePrecision;
+    public float insidePrecision;
     public Difficulty difficulty;
     public GameObject gfx;
     public int currencyReward;

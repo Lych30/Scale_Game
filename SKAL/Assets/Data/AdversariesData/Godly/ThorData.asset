@@ -16,7 +16,8 @@ MonoBehaviour:
   title: the thunder berserker
   tolerance: 5
   capacity: 2.5
-  precision: 0.07
+  outsidePrecision: 0.05
+  insidePrecision: 0.15
   difficulty: 3
   gfx: {fileID: 6172042114077781331, guid: cfc23bcf40b3ca0448eb02357af17cd5, type: 3}
   currencyReward: 0

@@ -16,7 +16,8 @@ MonoBehaviour:
   title: the neophite
   tolerance: 2
   capacity: 0.16
-  precision: 0.2
+  outsidePrecision: 0.2
+  insidePrecision: 0.15
   difficulty: 1
   gfx: {fileID: 7803241986700211839, guid: 0c0e81c21f7fa1f4e9b02db99600d0ce, type: 3}
   currencyReward: 3
