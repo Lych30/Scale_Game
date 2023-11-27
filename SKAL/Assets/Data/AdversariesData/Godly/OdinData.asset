@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Odin
   title: the thunder berserker
   tolerance: 5
-  capacity: 1.5
-  precision: 0.03
+  capacity: 0.85
+  outsidePrecision: 0
+  insidePrecision: 0
   difficulty: 3
   gfx: {fileID: 6172042114077781331, guid: 74597dbea5f20b546bcaf22a8aa98d6b, type: 3}
   currencyReward: 0

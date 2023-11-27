@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Thor
   title: the thunder berserker
   tolerance: 5
-  capacity: 2.5
-  outsidePrecision: 0.05
-  insidePrecision: 0.15
+  capacity: 3
+  outsidePrecision: 0.2
+  insidePrecision: 0.1
   difficulty: 3
   gfx: {fileID: 6172042114077781331, guid: cfc23bcf40b3ca0448eb02357af17cd5, type: 3}
   currencyReward: 0

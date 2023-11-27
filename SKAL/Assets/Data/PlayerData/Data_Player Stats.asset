@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Data_Player Stats
   m_EditorClassIdentifier: 
   name: you
-  tolerance: 0.2
-  capacity: 0.04
+  tolerance: 0.39999998
+  capacity: 0.41999996
   magicPoints: 0
-  RedMagic: 0
-  BlueMagic: 0
-  GreenMagic: 0
-  currency: 0
+  RedMagic: 10
+  BlueMagic: 10
+  GreenMagic: 10
+  currency: 264

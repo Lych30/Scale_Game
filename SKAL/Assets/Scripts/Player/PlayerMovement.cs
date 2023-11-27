@@ -32,16 +32,10 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
 
-        if (!_isHolding)
-        {
-            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
-            _animator.Play("Player_Idle");
-            return;
-        }
-
-        if (!_canMove)
+        if (!_canMove || !_isHolding)
         {
             _animator.Play("Player_Idle");
+            _rb.velocity = Vector3.zero;
             return;
         }
 

@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0d30cd4fb136941843532d4580dce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDifficulty: 0
+  _currentDifficulty: 3
   _winsBeforeDifUp: 3
   _EasyAdversaryStats:
   - {fileID: 11400000, guid: 359ac8db862f47848b671cd99ddc0e94, type: 2}
@@ -83506,8 +83506,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00095000863, y: 0.0002501011, z: 0}
-    m_Extent: {x: 0.99214995, y: 6.9053497, z: 0}
+    m_Center: {x: 0.0019000173, y: -0.002300024, z: 0}
+    m_Extent: {x: 1.0063, y: 6.8975, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Tyr
   title: 
   tolerance: 5
-  capacity: 1.3
+  capacity: 1
   outsidePrecision: 0.05
   insidePrecision: 0.15
   difficulty: 3
