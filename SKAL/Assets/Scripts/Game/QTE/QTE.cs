@@ -87,6 +87,7 @@ public abstract class QTE : MonoBehaviour
     {
         _progression = 0;
         _targetCircle.localScale = Vector3.one * _scaleToSucceed;
+        _circleSpeed = 1;
         ApplyScale();
     }
 }
