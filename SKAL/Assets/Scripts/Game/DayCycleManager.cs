@@ -4,6 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+public enum TimeOfDay
+{
+    Day,
+    Night
+}
 public class DayCycleManager : MonoBehaviour
 {
     public static DayCycleManager instance;
@@ -18,7 +23,9 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] Color _dayColorModifier;
     [SerializeField] Color _nightColorModifier;
 
-    Torch[] levelTorchs; 
+    Torch[] levelTorchs;
+
+    [SerializeField] TimeOfDay _startTime;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -30,7 +37,14 @@ public class DayCycleManager : MonoBehaviour
     private void Start()
     {
         levelTorchs = FindObjectsOfType<Torch>();
-        TriggerDay();
+
+        switch (_startTime)
+        {
+            case TimeOfDay.Day: TriggerDay();
+                break;
+            case TimeOfDay.Night: TriggerNight();
+                break;
+        }
     }
 
 #if UNITY_EDITOR
