@@ -71,13 +71,13 @@ public class PlayerManager : MonoBehaviour
     public void ApplyBlurr()
     {
         if (!volumeProfile.TryGet(out DOF)) throw new System.NullReferenceException(nameof(DOF));
-            DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f)));
+            DOF.focusDistance.Override(2 - (LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.015f)));
 
         if (!volumeProfile.TryGet(out PP)) throw new System.NullReferenceException(nameof(PP));
-            PP.distance.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f));
+            PP.distance.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.015f));
 
         if (!volumeProfile.TryGet(out CA)) throw new System.NullReferenceException(nameof(CA));
-            CA.intensity.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.01f));
+            CA.intensity.Override(LerpDrunkRatio / (1 + (stats.BlueMagic * 5) * 0.015f));
 
     }
     public void AddAlcohol(float dose)
@@ -99,14 +99,14 @@ public class PlayerManager : MonoBehaviour
         LerpDrunkRatio = Mathf.Lerp(LerpDrunkRatio, DrunkRatio, 0.1f);
 
         if (_litresInBlood > 0)
-            _litresInBlood -= 0.001f;
+            _litresInBlood -= 0.001f * (1 + (stats.BlueMagic * 5) * 0.015f);
         
         if(_litresInBlood < 0)
             _litresInBlood = 0;
-       
 
-        if(DrunkRatio > 0)
-            DrunkRatio -= 0.00175f;
+
+        if (DrunkRatio > 0)
+            DrunkRatio -= 0.00175f * (1 + (stats.BlueMagic * 5) * 0.015f);
 
         if (DrunkRatio < 0)
             DrunkRatio = 0;
