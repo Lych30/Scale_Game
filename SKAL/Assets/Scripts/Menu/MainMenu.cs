@@ -14,5 +14,9 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    
+    public void PlaySelectSound()
+    {
+        SoundManager.instance.PlaySFX("Button_Selected");
+    }
 }

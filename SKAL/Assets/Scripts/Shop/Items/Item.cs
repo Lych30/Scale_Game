@@ -74,4 +74,9 @@ public class Item : MonoBehaviour, IItemEffect
         PlayerManager.instance.stats.tolerance += data.toleranceBuff;
         PlayerManager.instance.UpdateStats();
     }
+
+    public void PlaySelectSound()
+    {
+        SoundManager.instance.PlaySFX("Button_Selected");
+    }
 }

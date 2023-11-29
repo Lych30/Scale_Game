@@ -37,6 +37,7 @@ public class ShopKeeper : MonoBehaviour, IInteractable
     {
         isOpen = true;
         _shopAnimator.Play("Shop_Enter");
+        
         Shop.instance.LoadShop();
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
     }

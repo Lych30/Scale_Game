@@ -92,5 +92,10 @@ public sealed class MagicShopMenu : MonoBehaviour
             _centralCrystal.SetActive(true);
     }
 
-    
+    public void PlaySelectSound()
+    {
+        SoundManager.instance.PlaySFX("Button_Selected");
+    }
+
+
 }

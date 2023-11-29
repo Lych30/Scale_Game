@@ -24,6 +24,7 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] Color _nightColorModifier;
 
     Torch[] levelTorchs;
+    [SerializeField] AudioSource _fireSource;
 
     [SerializeField] TimeOfDay _startTime;
     private void Awake()
@@ -71,6 +72,8 @@ public class DayCycleManager : MonoBehaviour
         {
             SetTorchesActive(false);
         }
+
+        _fireSource.Stop();
     }
 
     public void TriggerNight()
@@ -84,6 +87,8 @@ public class DayCycleManager : MonoBehaviour
         {
             SetTorchesActive(true);
         }
+
+        _fireSource.Play();
     }
 
     public void SetTorchesActive(bool active)

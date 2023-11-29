@@ -30,6 +30,8 @@ public class Sorcerer : MonoBehaviour, IInteractable
             CloseShop();
         }
 
+        SoundManager.instance.PlaySFX("parchemin_open");
+
         StartCoroutine(canInteractChange());
     }
 
@@ -37,8 +39,8 @@ public class Sorcerer : MonoBehaviour, IInteractable
     {
         isOpen = true;
         _magicShopAnimator.Play("MagicShop_Enter");
+        
         PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
-
         MagicShopMenu.instance.EnableButtons(true);
         if (_selectedButton)
             ESReference.instance.eventSystem.SetSelectedGameObject(_selectedButton);

@@ -11,11 +11,13 @@ public class PlayerQTE : QTE
         {
             HandleVisualEffect();
             HandleCircleSpeedAndStreak();
+            HandleSound();
             Init();
             return true;
         }
         else
         {
+            SoundManager.instance.PlaySFX("Fail");
             streak = 0;
             _circleSpeed = 1;
             Init();

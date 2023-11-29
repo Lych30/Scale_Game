@@ -175,9 +175,11 @@ public class GameManager : MonoBehaviour
 
         StatsMenu.instance.gameObject.SetActive(false);
 
+        SoundManager.instance.PlaySFX("Gates_closing");
         _versusPanelAnimator.Play("Versus_Entrance");
-        yield return new WaitForSeconds(1.0f);
 
+        yield return new WaitForSeconds(1.0f);
+        SoundManager.instance.PlaySFX("Gates_hit");
         StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider, _currentDifficulty);
         StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.stats, _playerSlider, _currentDifficulty);
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
@@ -220,6 +222,8 @@ public class GameManager : MonoBehaviour
         if (_barAnimator)
             _barAnimator.Play("Bar_Exit");
 
+        SoundManager.instance.PlaySFX("Crowd");
+
         _playerQTE.gameObject.SetActive(false);
         _adversaryQTE.gameObject.SetActive(false);
 
@@ -246,6 +250,7 @@ public class GameManager : MonoBehaviour
                 UpDifficulty();
                 _winsBeforeDifUp = 3;
             }
+
 
             LoadAdversary();
         }

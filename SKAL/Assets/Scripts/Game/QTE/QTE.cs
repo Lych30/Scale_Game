@@ -90,4 +90,10 @@ public abstract class QTE : MonoBehaviour
         _circleSpeed = 1;
         ApplyScale();
     }
+
+    public void HandleSound()
+    {
+        SoundManager.instance.PlaySFX("Sip");
+        SoundManager.instance.PlaySFX("Hey");
+    }
 }
