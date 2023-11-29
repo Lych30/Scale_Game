@@ -5879,6 +5879,7 @@ MonoBehaviour:
   _progression: 0
   _scaleToSucceed: 0.35
   _maxCircleSpeed: 1.5
+  _circleSpeed: 1
   _magicParticleSystem: {fileID: 1292083600}
   _RuneParticleSystem_Tiers:
   - {fileID: 2069199853}
@@ -13220,8 +13221,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.99926466
+    width: 0.99999994
+    height: 0.99952745
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -13251,7 +13252,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5659981, y: 0.37500024, z: -11}
+  m_LocalPosition: {x: -0.56600094, y: 0.37500024, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31731,6 +31732,7 @@ MonoBehaviour:
   _progression: 0
   _scaleToSucceed: 0.35
   _maxCircleSpeed: 1.5
+  _circleSpeed: 1
   _magicParticleSystem: {fileID: 1400790183}
   _RuneParticleSystem_Tiers:
   - {fileID: 1624054803}
@@ -83752,8 +83754,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0039999485, y: 0.0031499863, z: 0}
-    m_Extent: {x: 1.0057, y: 6.90375, z: 0}
+    m_Center: {x: -0.0016500056, y: -0.0025000572, z: 0}
+    m_Extent: {x: 0.99995005, y: 6.8968, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

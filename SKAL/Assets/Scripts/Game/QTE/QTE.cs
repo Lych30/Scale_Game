@@ -11,7 +11,7 @@ public abstract class QTE : MonoBehaviour
     [SerializeReference] protected float _progression;
     [SerializeReference] protected float _scaleToSucceed;
     [SerializeReference,Range(1,3)] protected float _maxCircleSpeed = 2;
-    protected float _circleSpeed = 1;
+    [SerializeField] protected float _circleSpeed = 1;
     [SerializeReference] protected ParticleSystem _magicParticleSystem;
     [SerializeReference] protected ParticleSystem[] _RuneParticleSystem_Tiers;
 
@@ -95,5 +95,13 @@ public abstract class QTE : MonoBehaviour
     {
         SoundManager.instance.PlaySFX("Sip");
         SoundManager.instance.PlaySFX("Hey");
+    }
+
+    public void ResetQTE()
+    {
+        _progression = 0;
+        _targetCircle.localScale = Vector3.one * _scaleToSucceed;
+
+        ApplyScale();
     }
 }

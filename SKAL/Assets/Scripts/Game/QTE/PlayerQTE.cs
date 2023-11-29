@@ -12,7 +12,7 @@ public class PlayerQTE : QTE
             HandleVisualEffect();
             HandleCircleSpeedAndStreak();
             HandleSound();
-            Init();
+            ResetQTE();
             return true;
         }
         else
@@ -20,7 +20,7 @@ public class PlayerQTE : QTE
             SoundManager.instance.PlaySFX("Fail");
             streak = 0;
             _circleSpeed = 1;
-            Init();
+            ResetQTE();
             return false;
         }
     }
@@ -44,5 +44,7 @@ public class PlayerQTE : QTE
 
         if (streak > 4)
             streak = 4;
+
+        Debug.Log(_circleSpeed);
     }
 }
