@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    public float basePitch = 1f;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class SoundManager : MonoBehaviour
         if (s == null)
             return;
 
-        sfxSource.pitch = 1 + UnityEngine.Random.Range(-0.1f, 0.1f);
+        sfxSource.pitch = basePitch + UnityEngine.Random.Range(-0.2f, 0.2f);
         sfxSource.clip = s.Clip;
         sfxSource.PlayOneShot(sfxSource.clip);
     }

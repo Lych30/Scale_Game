@@ -11,13 +11,14 @@ public class AdversaryQTE : QTE
         {
             HandleVisualEffect();
             HandleCircleSpeedAndStreak();
+            ResetQTE();
             return true;
         }
         else
         {
             streak = 0;
             _circleSpeed = 1;
-            Init();
+            ResetQTE();
             return false;
         }
     }

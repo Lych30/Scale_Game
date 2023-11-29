@@ -31,6 +31,8 @@ public class ShopKeeper : MonoBehaviour, IInteractable
         }
         
         StartCoroutine(canInteractChange());
+
+        SoundManager.instance.PlaySFX("Shop_Open");
     }
 
     public void OpenShop()
