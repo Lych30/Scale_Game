@@ -17,14 +17,19 @@ public class AdversaryBarrel : Barrel
         _slider = slider;
         SetUpSliderValues();
         SetUpVisuals(difficulty);
+        
     }
 
     public override void Sip()
     {
         _LitresToDring -= _adversaryStats.capacity;
+        UpdateLitresText();
         _slider.value = _LitresToDring * 20;
-        if (_LitresToDring <= 0)
-            StartCoroutine(GameManager.instance.GameEnd(false));
+
+        if (_LitresToDring > 0)
+            return;
+
+        StartCoroutine(GameManager.instance.GameEnd(false));
         //UPDATE VISUALS
     }
 
@@ -32,4 +37,6 @@ public class AdversaryBarrel : Barrel
     {
         base.SetUpVisuals(difficulty);
     }
+
+    
 }

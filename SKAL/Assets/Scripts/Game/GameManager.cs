@@ -174,6 +174,7 @@ public class GameManager : MonoBehaviour
         _GameActive = true;
 
         StatsMenu.instance.gameObject.SetActive(false);
+        ControlsMenu.instance.gameObject.SetActive(false);
 
         SoundManager.instance.PlaySFX("Gates_closing");
         _versusPanelAnimator.Play("Versus_Entrance");
@@ -223,9 +224,12 @@ public class GameManager : MonoBehaviour
             _barAnimator.Play("Bar_Exit");
 
         SoundManager.instance.PlaySFX("Crowd");
-
+        
         _playerQTE.gameObject.SetActive(false);
         _adversaryQTE.gameObject.SetActive(false);
+
+        StageReference.instance.playerBarrel.ResetTMProTexts();
+        StageReference.instance.adversaryBarrel.ResetTMProTexts();
 
         yield return new WaitForSeconds(0.25f);
 
@@ -266,6 +270,7 @@ public class GameManager : MonoBehaviour
         _GameActive = false;
 
         StatsMenu.instance.gameObject.SetActive(true);
+        ControlsMenu.instance.gameObject.SetActive(true);
 
 
         
