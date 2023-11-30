@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Easy_AdversaryStats_2
   m_EditorClassIdentifier: 
   name: Bjorn
-  title: drunken
+  title: The Clueless
   tolerance: 1
   capacity: 0.04
   outsidePrecision: 0.15

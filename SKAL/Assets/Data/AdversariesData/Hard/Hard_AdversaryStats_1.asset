@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
   m_Name: Hard_AdversaryStats_1
   m_EditorClassIdentifier: 
-  name: Ragnar
-  title: local farmer
+  name: Thora
+  title: The Fearless
   tolerance: 3
   capacity: 0.8
   outsidePrecision: 0.075
