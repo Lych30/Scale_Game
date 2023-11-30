@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -66,13 +67,13 @@ public class GameManager : MonoBehaviour
     private bool _GameActive = false;
     public bool gameActive { get { return _GameActive; } }
 
-
+    private bool GameOver = false;
 
     SpriteRenderer _ennemyRenderer;
     GameObject _adversary;
     AdversaryStats _adversaryStats;
     [SerializeField] GameObject _vaArena;
-
+    [SerializeField] GameOver _gameOver;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -255,8 +256,8 @@ public class GameManager : MonoBehaviour
                 _winsBeforeDifUp = 3;
             }
 
-
-            LoadAdversary();
+           if(!GameOver)
+                LoadAdversary();
         }
        
 
@@ -272,12 +273,22 @@ public class GameManager : MonoBehaviour
         StatsMenu.instance.gameObject.SetActive(true);
         ControlsMenu.instance.gameObject.SetActive(true);
 
-
+        if (GameOver)
+        {
+            //GAME OVER
+            _gameOver.TriggerGO();
+        }
         
     }
 
     private void UpDifficulty()
     {
+
+        if (_currentDifficulty == Difficulty.Einherjar)
+        {
+            GameOver = true;
+            return;
+        }
 
         if(_currentDifficulty < Difficulty.Einherjar)
             _currentDifficulty++;
