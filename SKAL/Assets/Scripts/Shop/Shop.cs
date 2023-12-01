@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class Shop : MonoBehaviour
     [SerializeField] Item _Item;
     [SerializeField] List<VerticalLayoutGroup> _vertLGroups;
     private List<GameObject> _Activeitems = new List<GameObject>();
+    [SerializeField] TextMeshProUGUI _currencyText;
 
     private void Awake()
     {
@@ -69,7 +71,7 @@ public class Shop : MonoBehaviour
             }
         }
 
-        
+        _currencyText.text = "currency : " + PlayerManager.instance.stats.currency.ToString();
     }
     /*
     public void LoadShop()
@@ -113,6 +115,6 @@ public class Shop : MonoBehaviour
     public void BuyItem(Item item)
     {
         item.ApplyItemStats(item.Data);
-        Debug.Log("You have bought : " + item.itemName +" for "+ item.cost + " currencies");
+        _currencyText.text = "currency : " + PlayerManager.instance.stats.currency.ToString();
     }
 }
