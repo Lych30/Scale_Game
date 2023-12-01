@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OdinData
   m_EditorClassIdentifier: 
   name: Odin
-  title: the thunder berserker
+  title: The Allfather
   tolerance: 5
   capacity: 0.85
   outsidePrecision: 0

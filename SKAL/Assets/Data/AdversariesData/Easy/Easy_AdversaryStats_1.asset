@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51c5419b20ec143b951e61acb8c258, type: 3}
   m_Name: Easy_AdversaryStats_1
   m_EditorClassIdentifier: 
-  name: Guthroth Hringsson
+  name: Guthroth
   title: The Drunken
   tolerance: 1
   capacity: 0.04

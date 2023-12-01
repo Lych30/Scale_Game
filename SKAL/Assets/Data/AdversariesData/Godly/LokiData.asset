@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LokiData
   m_EditorClassIdentifier: 
   name: Loki
-  title: 
+  title: The Sly One
   tolerance: 5
   capacity: 1
   outsidePrecision: 0.05

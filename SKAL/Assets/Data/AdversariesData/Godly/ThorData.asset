@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThorData
   m_EditorClassIdentifier: 
   name: Thor
-  title: the thunder berserker
+  title: the Thunder Berserker
   tolerance: 5
   capacity: 3
   outsidePrecision: 0.2

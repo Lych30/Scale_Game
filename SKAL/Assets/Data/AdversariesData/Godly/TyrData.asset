@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TyrData
   m_EditorClassIdentifier: 
   name: Tyr
-  title: 
+  title: The God of War
   tolerance: 5
   capacity: 1
   outsidePrecision: 0.05
