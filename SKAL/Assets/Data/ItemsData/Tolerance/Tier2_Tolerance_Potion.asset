@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Medium Tolerance Potion
   itemCost: 3
-  itemImage: {fileID: 0}
-  itemDescription: 
+  itemImage: {fileID: 21300000, guid: 480910c2cf44b4744b4796c81e25b18f, type: 3}
+  itemDescription: buffs tolerance
   toleranceBuff: 0.02
   capacityBuff: 0

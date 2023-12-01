@@ -30,7 +30,7 @@ public class Item : MonoBehaviour, IItemEffect
         _cost = data.itemCost;
         _costText.text = _cost.ToString();
 
-        _image = data.itemImage;
+        _image.sprite = data.itemImage;
 
         _description.text = data.itemDescription;
         SetVisual();

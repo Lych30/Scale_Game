@@ -7,7 +7,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public int itemCost;
-    public Image itemImage;
+    public Sprite itemImage;
     public string itemDescription;
     public float toleranceBuff;
     public float capacityBuff;

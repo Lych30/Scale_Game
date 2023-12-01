@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Medium Scroll Boost
   itemCost: 5
-  itemImage: {fileID: 0}
-  itemDescription: 
+  itemImage: {fileID: 21300000, guid: ab8d871424277b240a541f3c5e41178b, type: 3}
+  itemDescription: buffs both capacity and tolerance
   toleranceBuff: 0.04
   capacityBuff: 0.04

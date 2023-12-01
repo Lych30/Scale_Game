@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Medium Capacity Potion
   itemCost: 3
-  itemImage: {fileID: 0}
-  itemDescription: Tier 2 Capacity Potion
+  itemImage: {fileID: 21300000, guid: ae12908fae7df3d4dbf365ebfa7421dd, type: 3}
+  itemDescription: buffs capacity
   toleranceBuff: 0
   capacityBuff: 0.2

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public sealed class MagicShopMenu : MonoBehaviour
      vert = % de reduction de l'effet de l'alcool
      bleu = % de taille du QTE
     */
+    [SerializeField] TextMeshProUGUI _magicPointsText;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -29,6 +31,8 @@ public sealed class MagicShopMenu : MonoBehaviour
     {
         foreach (var button in buttons)
             button.interactable = enable;
+
+        _magicPointsText.text = "Magic Points : " + PlayerManager.instance.stats.magicPoints.ToString();
     }
 
 
@@ -91,6 +95,8 @@ public sealed class MagicShopMenu : MonoBehaviour
 
         if(_redSlider.Maxed && _blueSlider.Maxed && _greenSlider.Maxed)
             _centralCrystal.SetActive(true);
+
+        _magicPointsText.text = "Magic Points : "+PlayerManager.instance.stats.magicPoints.ToString();
     }
 
     public void PlaySelectSound()
