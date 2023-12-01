@@ -196,8 +196,11 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 76f2c0611a0ab7749869d97e99fdb6af, type: 3}
   - Name: Crowd
     Clip: {fileID: 8300000, guid: 2e26b6f74e9d5f84b9a0e6897ad8cef0, type: 3}
+  - Name: magic
+    Clip: {fileID: 8300000, guid: 570f146ed9920ca4a83b99e6af6809f4, type: 3}
   musicSource: {fileID: 8281458319843144248}
   sfxSource: {fileID: 6600947200144852142}
+  basePitch: 1
 --- !u!1 &8242421694862851435
 GameObject:
   m_ObjectHideFlags: 0

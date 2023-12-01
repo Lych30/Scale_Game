@@ -10,7 +10,12 @@ public class GameOver : MonoBehaviour
     public void TriggerGO()
     {
         _container.SetActive(true);
+        _quitButton.interactable = true;
+        PlayerManager.instance.GetComponent<PlayerMovement>()._canMove = false;
+        PlayerManager.instance.GetComponent<PlayerInteract>().CanInteract = false;
+
         ESReference.instance.eventSystem.SetSelectedGameObject(_quitButton.gameObject);
+
     }
 
     public void Reward()

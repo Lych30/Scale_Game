@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
         if (s == null)
             return;
 
-        sfxSource.pitch = basePitch + UnityEngine.Random.Range(-0.2f, 0.2f);
+        sfxSource.pitch = basePitch + UnityEngine.Random.Range(0.0f, 0.2f);
         sfxSource.clip = s.Clip;
         sfxSource.PlayOneShot(sfxSource.clip);
     }

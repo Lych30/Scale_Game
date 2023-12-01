@@ -180,8 +180,10 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySFX("Gates_closing");
         _versusPanelAnimator.Play("Versus_Entrance");
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         SoundManager.instance.PlaySFX("Gates_hit");
+        yield return new WaitForSeconds(0.5f);
+
         StageReference.instance.adversaryBarrel.Init(_LitresToDring, _adversaryStats, _adversarySlider, _currentDifficulty);
         StageReference.instance.playerBarrel.Init(_LitresToDring, PlayerManager.instance.stats, _playerSlider, _currentDifficulty);
         PlayerManager.instance.transform.position = new Vector3(StageReference.instance.playerBarrel.transform.position.x, PlayerManager.instance.transform.position.y, PlayerManager.instance.transform.position.z);
@@ -253,7 +255,7 @@ public class GameManager : MonoBehaviour
             if (_winsBeforeDifUp <= 0)
             {
                 UpDifficulty();
-                _winsBeforeDifUp = 3;
+                
             }
 
            if(!GameOver)
@@ -290,8 +292,18 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if(_currentDifficulty < Difficulty.Einherjar)
+        if (_currentDifficulty != Difficulty.Einherjar)
+        {
             _currentDifficulty++;
+        }
+
+        if (_currentDifficulty != Difficulty.Einherjar)
+            _winsBeforeDifUp = 3;
+        else
+            _winsBeforeDifUp = 5;
+
+        
+            
 
         //CHECK FOR NIGHT TIME WHEN DIFFICULTY IS IN HIGH
         if (_currentDifficulty >= Difficulty.Hard)

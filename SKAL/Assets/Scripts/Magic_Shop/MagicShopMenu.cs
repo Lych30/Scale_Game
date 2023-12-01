@@ -79,6 +79,7 @@ public sealed class MagicShopMenu : MonoBehaviour
 
         PlayerManager.instance.stats.magicPoints--;
         PlayerManager.instance.UpdateStats();
+        SoundManager.instance.PlaySFX("magic");
 
         slider.value += 1;
 
